@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         float f = Mathf.InverseLerp(2436f / 1125f, 1920f / 1080f, (float)Screen.height / (float)Screen.width);
 
-
+        
         target.transform.localPosition = Vector3.Lerp(new Vector3(1.77f, 0, 0), new Vector3(2.1f, 0, 0), f);
 
         //CreateKnife();
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
                             isTimeToNewKnife = true;
                             isFly = false;
 
-                            vibrator.Vibrate(VibrationManager.VibraType.Error);
+                            vibrator.Vibrate(VibrationType.Error);
 
                             if (nowKnife != null)
                                 Destroy(nowKnife);
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
                     isTimeToNewKnife = true;
                     isFly = false;
 
-                    vibrator.Vibrate(VibrationManager.VibraType.Error);
+                    vibrator.Vibrate(VibrationType.Error);
 
                     if (nowKnife != null)
                         Destroy(nowKnife);
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
 
             isFly = true;
 
-            vibrator.Vibrate(VibrationManager.VibraType.Soft);
+            vibrator.Vibrate(VibrationType.Light);
 
             hit = Physics2D.Raycast(nowKnife.transform.position, nowKnife.transform.GetChild(0).position - nowKnife.transform.position, 100, toHit);
 
@@ -284,7 +284,7 @@ public class PlayerController : MonoBehaviour
     {
         flySpeed = 0;
 
-        vibrator.Vibrate(VibrationManager.VibraType.Heavy);
+        vibrator.Vibrate(VibrationType.Heavy);
 
         nowKnife.transform.parent = target.transform;
 

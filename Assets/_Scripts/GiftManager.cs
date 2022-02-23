@@ -93,7 +93,7 @@ public class GiftManager : MonoBehaviour
             timeToGift = 1800;
             timerText.text = IntToTime(timeToGift);
 
-            vibrator.Vibrate(VibrationManager.VibraType.Success);
+            vibrator.Vibrate(VibrationType.Success);
         }
     }
 

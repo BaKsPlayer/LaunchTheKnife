@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
 
             CheckUpgrades();
 
-            vibrator.Vibrate(VibrationManager.VibraType.Success);
+            vibrator.Vibrate(VibrationType.Success);
         }
 
     }
@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
 
             CheckUpgrades();
 
-            vibrator.Vibrate(VibrationManager.VibraType.Success);
+            vibrator.Vibrate(VibrationType.Success);
         }
     }
 

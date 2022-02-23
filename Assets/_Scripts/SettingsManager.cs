@@ -71,7 +71,7 @@ public class SettingsManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("Sound", 0);
         }
 
-        vibrator.Vibrate(VibrationManager.VibraType.Light);
+        vibrator.Vibrate(VibrationType.Light);
     }
 
     public void ToggleMusic()
@@ -89,7 +89,7 @@ public class SettingsManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("Music", 0);
         }
 
-        vibrator.Vibrate(VibrationManager.VibraType.Light);
+        vibrator.Vibrate(VibrationType.Light);
     }
 
     public void ToggleVibration()
@@ -99,7 +99,7 @@ public class SettingsManager : MonoBehaviour
             vibrationToggle.sprite = toggleOn;
             PlayerPrefsSafe.SetInt("Vibration", 1);
 
-            vibrator.Vibrate(VibrationManager.VibraType.Light);
+            vibrator.Vibrate(VibrationType.Light);
 
             //audioManager.PlaySound("PressButton");
         }
@@ -129,7 +129,7 @@ public class SettingsManager : MonoBehaviour
             scorePanel.GetComponent<RectTransform>().localPosition = new Vector2(-324, scorePanel.GetComponent<RectTransform>().localPosition.y);
         }
 
-        vibrator.Vibrate(VibrationManager.VibraType.Light);
+        vibrator.Vibrate(VibrationType.Light);
     }
 
 

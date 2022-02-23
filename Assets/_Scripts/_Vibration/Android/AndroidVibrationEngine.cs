@@ -1,8 +1,8 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-public static class Vibration
-{
+public static class AndroidVibrationEngine
+{ 
 
 #if UNITY_ANDROID && !UNITY_EDITOR
     public static AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -22,7 +22,6 @@ public static class Vibration
             Handheld.Vibrate();
     }
 
-
     public static void Vibrate(long milliseconds)
     {
         if (isAndroid())
@@ -37,7 +36,6 @@ public static class Vibration
             vibrator.Call("vibrate", pattern, repeat);
         else
             Handheld.Vibrate();
-
     }
 
     public static bool HasVibrator()

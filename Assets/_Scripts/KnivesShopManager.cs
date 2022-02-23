@@ -101,7 +101,7 @@ public class KnivesShopManager : MonoBehaviour
             if (button.GetComponent<Animation>() != null)
                 button.GetComponent<Animation>().Play();
 
-            vibrator.Vibrate(VibrationManager.VibraType.Error);
+            vibrator.Vibrate(VibrationType.Error);
         }
         else
         {
@@ -129,7 +129,7 @@ public class KnivesShopManager : MonoBehaviour
                 unlockPanel.transform.GetChild(1).gameObject.SetActive(true);
 
                 if (isTimeToVibrate)
-                vibrator.Vibrate(VibrationManager.VibraType.Medium);
+                vibrator.Vibrate(VibrationType.Medium);
             }
             else
             {
@@ -142,7 +142,7 @@ public class KnivesShopManager : MonoBehaviour
                 Text unlockCostText = unlockPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>();
                 unlockCostText.text = button.GetComponent<KnifeButtonInfo>().cost.ToString();
 
-                vibrator.Vibrate(VibrationManager.VibraType.Light);
+                vibrator.Vibrate(VibrationType.Light);
             }
 
 
@@ -184,7 +184,7 @@ public class KnivesShopManager : MonoBehaviour
             if (nonPurchasedKnives.ToArray().Length == 0)
                 unlockRandomKnifeButton.GetComponent<Button>().interactable = false;
 
-            vibrator.Vibrate(VibrationManager.VibraType.Success);
+            vibrator.Vibrate(VibrationType.Success);
         }
 
     }
@@ -227,7 +227,7 @@ public class KnivesShopManager : MonoBehaviour
                 if (nonPurchasedKnives.ToArray().Length == 0)
                     unlockRandomKnifeButton.GetComponent<Button>().interactable = false;
 
-                vibrator.Vibrate(VibrationManager.VibraType.Success);
+                vibrator.Vibrate(VibrationType.Success);
             }
 
         }
@@ -282,7 +282,7 @@ public class KnivesShopManager : MonoBehaviour
 
                 timeToChange = startTimeToChange + changeTimeRange * ((float)changesNumber / maxChangesNumber);
 
-                vibrator.Vibrate(VibrationManager.VibraType.Medium);
+                vibrator.Vibrate(VibrationType.Medium);
             }
 
             yield return null;
@@ -309,7 +309,7 @@ public class KnivesShopManager : MonoBehaviour
         blackOverlay.SetActive(false);
         buttonsOverlay.SetActive(false);
 
-        vibrator.Vibrate(VibrationManager.VibraType.Success);
+        vibrator.Vibrate(VibrationType.Success);
 
     }
 

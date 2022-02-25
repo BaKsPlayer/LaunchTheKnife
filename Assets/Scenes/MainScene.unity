@@ -2116,7 +2116,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &132104683
@@ -2997,42 +2997,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166700681}
   m_CullTransparentMesh: 1
---- !u!21 &176076323
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &181253597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,7 +3093,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &181253602
@@ -6473,6 +6437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e83b20b7543419bb89c2d1cccaedcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchasedKnifeColor: {r: 1, g: 1, b: 1, a: 1}
+  nonPurchasedKnifeColor: {r: 0.48, g: 0.48, b: 0.48, a: 0.69803923}
+  unlockPriceText: {fileID: 813725734}
   gameManager: {fileID: 1559415543}
   showKnife: {fileID: 650565298}
   unlockPanel: {fileID: 2025184286}
@@ -7042,7 +7009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 176076323}
+  m_Material: {fileID: 2016352273}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -8971,7 +8938,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &590300223
@@ -9919,7 +9886,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &666645887
@@ -13037,7 +13004,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &881424199
@@ -13912,42 +13879,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954917332}
   m_CullTransparentMesh: 1
---- !u!21 &955589375
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &964654695
 GameObject:
   m_ObjectHideFlags: 0
@@ -14203,7 +14134,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &981620318
@@ -14528,7 +14459,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &999527094
@@ -16104,6 +16035,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113318843}
   m_CullTransparentMesh: 1
+--- !u!21 &1115162759
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1116916090
 GameObject:
   m_ObjectHideFlags: 0
@@ -16274,10 +16241,10 @@ MonoBehaviour:
   publicCost: 1000
   indexInNonPurchased: 0
   isLocked: 0
-  knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
-  colorSprite: {fileID: 0}
-  nonColorSprite: {fileID: 0}
+  knifeShop: {fileID: 413520148}
+  knifeIcon: {fileID: 483373039}
+  colorSprite: {fileID: 1205416701152040810, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
+  nonColorSprite: {fileID: -7561877552320588135, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1118911185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16322,13 +16289,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 413520148}
-        m_TargetAssemblyTypeName: KnivesShopManager, Assembly-CSharp
-        m_MethodName: OnPressKnifeButton
-        m_Mode: 2
+      - m_Target: {fileID: 1118911184}
+        m_TargetAssemblyTypeName: KnifeButtonInfo, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1118911180}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20491,10 +20458,10 @@ MonoBehaviour:
   publicCost: 1000
   indexInNonPurchased: 0
   isLocked: 0
-  knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
-  colorSprite: {fileID: 0}
-  nonColorSprite: {fileID: 0}
+  knifeShop: {fileID: 413520148}
+  knifeIcon: {fileID: 326538339}
+  colorSprite: {fileID: -2354044729926064474, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
+  nonColorSprite: {fileID: 2646150636597740373, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1444571687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20539,13 +20506,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 413520148}
-        m_TargetAssemblyTypeName: KnivesShopManager, Assembly-CSharp
-        m_MethodName: OnPressKnifeButton
-        m_Mode: 2
+      - m_Target: {fileID: 1444571686}
+        m_TargetAssemblyTypeName: KnifeButtonInfo, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1444571682}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21092,7 +21059,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1479569636
@@ -21743,7 +21710,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1506817580
@@ -22100,7 +22067,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1515703137
@@ -23187,7 +23154,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1620330708
@@ -24540,10 +24507,10 @@ MonoBehaviour:
   publicCost: 0
   indexInNonPurchased: 0
   isLocked: 0
-  knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
-  colorSprite: {fileID: 0}
-  nonColorSprite: {fileID: 0}
+  knifeShop: {fileID: 413520148}
+  knifeIcon: {fileID: 1969991548}
+  colorSprite: {fileID: -5723618315912617923, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
+  nonColorSprite: {fileID: -3488482804671198197, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1718101989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24588,13 +24555,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 413520148}
-        m_TargetAssemblyTypeName: KnivesShopManager, Assembly-CSharp
-        m_MethodName: OnPressKnifeButton
-        m_Mode: 2
+      - m_Target: {fileID: 1718101988}
+        m_TargetAssemblyTypeName: KnifeButtonInfo, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1718101984}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26709,10 +26676,10 @@ MonoBehaviour:
   publicCost: 1000
   indexInNonPurchased: 0
   isLocked: 0
-  knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
-  colorSprite: {fileID: 0}
-  nonColorSprite: {fileID: 0}
+  knifeShop: {fileID: 413520148}
+  knifeIcon: {fileID: 467168962}
+  colorSprite: {fileID: -7678601869563919383, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
+  nonColorSprite: {fileID: -2914173702609090789, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1880213828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26757,13 +26724,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 413520148}
-        m_TargetAssemblyTypeName: KnivesShopManager, Assembly-CSharp
-        m_MethodName: OnPressKnifeButton
-        m_Mode: 2
+      - m_Target: {fileID: 1880213827}
+        m_TargetAssemblyTypeName: KnifeButtonInfo, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1880213823}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -28000,7 +27967,7 @@ MonoBehaviour:
   indexInNonPurchased: 0
   isLocked: 1
   knifeShop: {fileID: 0}
-  knifeImage: {fileID: 0}
+  knifeIcon: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1990755606
@@ -28169,6 +28136,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999200677}
   m_CullTransparentMesh: 1
+--- !u!21 &2016352273
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &2025184286
 GameObject:
   m_ObjectHideFlags: 0
@@ -28389,7 +28392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 955589375}
+  m_Material: {fileID: 1115162759}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

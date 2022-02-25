@@ -26,14 +26,6 @@ public class AdvertManager : MonoBehaviour
         shopButton.GetComponent<Button>().onClick.AddListener(delegate { ShowAd(AdType.CoinsReward); });
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    
-
     public void ShowAd(AdType adType)
     {
 #if UNITY_IOS
@@ -84,7 +76,7 @@ public class AdvertManager : MonoBehaviour
 
     public void Reward50Coins()
     {
-        knifeShop.GetComponent<KnivesShopManager>().Reward50Coins();
+        knifeShop.GetComponent<KnifeShop>().Reward50Coins();
     }
 
 }

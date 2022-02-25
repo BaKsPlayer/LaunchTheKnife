@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         if (PlayerPrefsSafe.GetInt("IsGameLaunchedYet") != 1)
         {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         settings.GetComponent<SettingsManager>().SettingsCheck();
 
-        knivesShop.GetComponent<KnivesShopManager>().CheckKnifeShopOnStart();
+        knivesShop.GetComponent<KnifeShop>().Initialize();
 
         coins = PlayerPrefsSafe.GetInt("Coins");
         nowCostMoneyUpgrade = PlayerPrefsSafe.GetInt("NowCostMoneyUpgrade");
@@ -139,9 +139,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenKnivesShop()
     {
-        knivesShop.GetComponent<KnivesShopManager>().shopCoinsText.text = coins.ToString();
+        knivesShop.GetComponent<KnifeShop>().shopCoinsText.text = coins.ToString();
 
-        knivesShop.GetComponent<KnivesShopManager>().CheckKnifeShop();
+        knivesShop.GetComponent<KnifeShop>().CheckKnifeShop();
 
         knivesShop.SetActive(true);
     }
@@ -262,7 +262,7 @@ public class GameManager : MonoBehaviour
 
         Invoke("CloseKnivesShopWithDelay", 0.5f);
 
-        knivesShop.GetComponent<KnivesShopManager>().isTimeToVibrate = false;
+        knivesShop.GetComponent<KnifeShop>().isTimeToVibrate = false;
 
         CheckUpgrades();
     }

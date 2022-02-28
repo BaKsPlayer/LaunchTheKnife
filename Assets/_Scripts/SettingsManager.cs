@@ -25,7 +25,7 @@ public class SettingsManager : MonoBehaviour
         
     }
 
-    public void SettingsCheck()
+    public void InitSettings()
     {
         if (PlayerPrefsSafe.GetInt("Sound") == 0)
             soundToggle.sprite = toggleOff;

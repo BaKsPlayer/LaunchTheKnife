@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     VibrationManager vibrator;
 
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("LeftHand", 0);
         }
 
-        settings.GetComponent<SettingsManager>().SettingsCheck();
+        settings.GetComponent<SettingsManager>().InitSettings();
 
         knivesShop.GetComponent<KnifeShop>().Initialize();
 
@@ -119,11 +119,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyUp(KeyCode.C))
-        //{
-        //    coins += 1000;
-        //    coinsText.text = coins.ToString();
-        //}
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            coins += 1000;
+            coinsText.text = coins.ToString();
+        }
 
 
     }
@@ -139,9 +139,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenKnivesShop()
     {
-        knivesShop.GetComponent<KnifeShop>().shopCoinsText.text = coins.ToString();
+        knivesShop.GetComponent<KnifeShop>().coinsText.text = coins.ToString();
 
-        knivesShop.GetComponent<KnifeShop>().CheckKnifeShop();
+        knivesShop.GetComponent<KnifeShop>().ResetKnifeShop();
 
         knivesShop.SetActive(true);
     }
@@ -261,8 +261,6 @@ public class GameManager : MonoBehaviour
         knivesShop.GetComponent<Animator>().SetTrigger("Close");
 
         Invoke("CloseKnivesShopWithDelay", 0.5f);
-
-        knivesShop.GetComponent<KnifeShop>().isTimeToVibrate = false;
 
         CheckUpgrades();
     }

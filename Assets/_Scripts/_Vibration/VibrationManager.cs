@@ -11,7 +11,7 @@ public class VibrationManager : MonoBehaviour
 
     public static VibrationManager instance;
 
-    private void Start()
+    private void Awake()
     {
 #if UNITY_IOS && !UNITY_EDITOR
        _vibrator = gameObject.AddComponent<IOSVibrator>();

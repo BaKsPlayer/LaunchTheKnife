@@ -1,33 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ButtonParameters;
 
 public class KnifeButton : MonoBehaviour
 {
-    public int id, publicCost, indexInNonPurchased = -1;
-    
-    public bool isLocked;
+    [SerializeField] private bool isLocked;
 
+    [SerializeField] private int id;
+    public int Id => id;
+
+    [SerializeField] private int initPrice;
     private SafeInt price;
-
-    public int Price
-    {
-        get { return price; }
-    }
+    public int Price => price;
 
     [SerializeField] private KnifeShop knifeShop;
+    [SerializeField] private KnifeButtonParameters buttonParams;
 
     [SerializeField] private Image knifeIcon;
+    public Image KnifeIcon => knifeIcon;
 
     [SerializeField] private Sprite colorSprite;
     [SerializeField] private Sprite nonColorSprite;
 
-    public Image KnifeIcon => knifeIcon;
-
     private void Awake()
     {
-        price = publicCost;
+        price = initPrice;
 
         knifeIcon = transform.GetChild(0).GetComponent<Image>();
     }
@@ -37,13 +34,14 @@ public class KnifeButton : MonoBehaviour
         SetDeselectedButtonPanel();
         SetDeselectedKnifeIcon();
 
-        if (PlayerPrefsSafe.GetInt("KnifeLvl_" + id) == 1)
-            knifeIcon.color = knifeShop.PurchasedKnifeColor;
+        if (PlayerPrefsSafe.GetInt("KnifeLvl_" + Id) == 1)
+            knifeIcon.color = buttonParams.PurchasedKnifeColor;
         else
         {
-            knifeIcon.color = knifeShop.NonPurchasedKnifeColor;
+            knifeIcon.color = buttonParams.NonPurchasedKnifeColor;
 
-            knifeShop.nonPurchasedKnives.Add(this);
+            knifeShop.AddNonPurchasedKnife(this);
+            
         }
     }
 
@@ -57,30 +55,37 @@ public class KnifeButton : MonoBehaviour
             return;
         }
 
+        if (PlayerPrefsSafe.GetInt("KnifeLvl_" + Id) == 1)
+            VibrationManager.instance.Vibrate(VibrationType.Medium);
+        else
+            VibrationManager.instance.Vibrate(VibrationType.Light);
+
         knifeShop.SelectKnife(this);
 
-        SetSelectedButtonPanel();
+        if (knifeShop.isGetingRandomKnife)
+            SetSelectedButtonPanel(buttonParams.RandomButtonSprite);
+        else
+            SetSelectedButtonPanel(buttonParams.SelectedButtonSprite);
 
         knifeShop.SetShowKnife(this);
 
     }
 
-    private void SetSelectedButtonPanel()
+    private void SetSelectedButtonPanel(Sprite selectedPanel)
     {
-        GetComponent<Image>().sprite = knifeShop.selectedPanel;
+        GetComponent<Image>().sprite = selectedPanel;
         GetComponent<RectTransform>().localScale = new Vector2(1.1f, 1.1f);
     }
 
     public void SetDeselectedButtonPanel()
     {
-        GetComponent<Image>().sprite = knifeShop.unselectedPanel;
+        GetComponent<Image>().sprite = buttonParams.UnselectedButtonSprite;
         GetComponent<RectTransform>().localScale = new Vector2(1f, 1f);
     }
 
     public void SetSelectedKnifeIcon()
     {
         knifeIcon.sprite = colorSprite;
-        PlayerPrefsSafe.SetInt("NowKnifeSkin", id);
     }
 
     public void SetDeselectedKnifeIcon()

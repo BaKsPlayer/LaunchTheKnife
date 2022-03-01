@@ -10,7 +10,7 @@ public struct SafeInt
         salt = Random.Range(int.MinValue / 4, int.MaxValue / 4);
         this.value = value ^ salt;
     }
-
+    
     public override bool Equals(object obj)
     {
         return (int)this == (int)obj;

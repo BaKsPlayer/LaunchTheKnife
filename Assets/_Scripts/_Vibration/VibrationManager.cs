@@ -9,13 +9,22 @@ public class VibrationManager : MonoBehaviour
 
     IVibrator _vibrator;
 
-    private void Start()
+    public static VibrationManager instance;
+
+    private void Awake()
     {
 #if UNITY_IOS && !UNITY_EDITOR
        _vibrator = gameObject.AddComponent<IOSVibrator>();
-#elif UNITY_ANDROID
-        _vibrator = gameObject.AddComponent<AndroidVibrator>();    
+#elif UNITY_ANDROID && !UNITY_EDITOR
+        _vibrator = gameObject.AddComponent<AndroidVibrator>();
 #endif
+
+        if (instance != null)
+            if (instance != this)
+                Destroy(this);
+
+        DontDestroyOnLoad(this);
+        instance = this;
     }
 
     public void Vibrate(VibrationType type)

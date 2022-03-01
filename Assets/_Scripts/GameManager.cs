@@ -29,12 +29,12 @@ public class GameManager : MonoBehaviour
 
     VibrationManager vibrator;
 
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         if (PlayerPrefsSafe.GetInt("IsGameLaunchedYet") != 1)
         {
@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("LeftHand", 0);
         }
 
-        settings.GetComponent<SettingsManager>().SettingsCheck();
+        settings.GetComponent<SettingsManager>().InitSettings();
 
-        knivesShop.GetComponent<KnivesShopManager>().CheckKnifeShopOnStart();
+        knivesShop.GetComponent<KnifeShop>().Initialize();
 
         coins = PlayerPrefsSafe.GetInt("Coins");
         nowCostMoneyUpgrade = PlayerPrefsSafe.GetInt("NowCostMoneyUpgrade");
@@ -119,11 +119,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyUp(KeyCode.C))
-        //{
-        //    coins += 1000;
-        //    coinsText.text = coins.ToString();
-        //}
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            coins += 1000;
+            coinsText.text = coins.ToString();
+        }
 
 
     }
@@ -139,9 +139,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenKnivesShop()
     {
-        knivesShop.GetComponent<KnivesShopManager>().shopCoinsText.text = coins.ToString();
+        knivesShop.GetComponent<KnifeShop>().CoinsText.text = coins.ToString();
 
-        knivesShop.GetComponent<KnivesShopManager>().CheckKnifeShop();
+        knivesShop.GetComponent<KnifeShop>().ResetKnifeShop();
 
         knivesShop.SetActive(true);
     }
@@ -261,8 +261,6 @@ public class GameManager : MonoBehaviour
         knivesShop.GetComponent<Animator>().SetTrigger("Close");
 
         Invoke("CloseKnivesShopWithDelay", 0.5f);
-
-        knivesShop.GetComponent<KnivesShopManager>().isTimeToVibrate = false;
 
         CheckUpgrades();
     }

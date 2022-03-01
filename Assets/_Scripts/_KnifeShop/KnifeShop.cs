@@ -7,47 +7,36 @@ public class KnifeShop : MonoBehaviour
 {
     KnifeButton _activeButton;
     KnifeButton _activeKnife;
+    public bool isGetingRandomKnife { get; private set; }
 
-    [HideInInspector] public bool isGetingRandomKnife { get; private set; }
+    [Header("Buy Random Knife")]
+    [SerializeField] private int randomKnifePrice;
+    private SafeInt _randomKnifePrice;
 
-    [SerializeField] private Text knifePriceText;
-
-    [SerializeField] private Button unlockRandomKnifeButton;
-
-    [SerializeField] private Transform demoKnife;
-
+    [SerializeField] private Button buyRandomKnifeButton;
     [SerializeField] private GameObject blackOverlay;
     [SerializeField] private GameObject buttonsOverlay;
 
+    [Header("Buy Knife")]
+    [SerializeField] private Text knifePriceText;
     [SerializeField] private GameObject purchasePanel;
     [SerializeField] private GameObject boughtPanel;
 
+    [Header("Other")]
+    [SerializeField] private DemoKnife demoKnife;
+    public DemoKnife DemoKnife => demoKnife;
+
+    [SerializeField] private Text coinsText;
+    public Text CoinsText => coinsText;
+
     public GameManager gameManager;
 
-    public Text coinsText;
-
-    private SafeInt randomKnifePrice;
-    public int publicRandomKnifeCost;
-    public float rotateSpeed;
-
     [SerializeField] private KnifeButton[] allKnives;
-
     private List<KnifeButton> nonPurchasedKnives = new List<KnifeButton>();
 
     public void AddNonPurchasedKnife(KnifeButton knifeButton)
     {
         nonPurchasedKnives.Add(knifeButton);
-    }
-
-    private void Start()
-    {
-        randomKnifePrice = publicRandomKnifeCost;
-
-    }
-
-    private void Update()
-    {
-        demoKnife.Rotate(Vector3.forward * -rotateSpeed * Time.deltaTime);
     }
 
     public void SelectKnife(KnifeButton knifeButton)
@@ -58,7 +47,6 @@ public class KnifeShop : MonoBehaviour
         if (PlayerPrefsSafe.GetInt("KnifeLvl_" + knifeButton.Id) == 1)
         {
             SetActivePurchasePanel(false);
-
             ChangeKnife(knifeButton);
         }
         else
@@ -74,12 +62,6 @@ public class KnifeShop : MonoBehaviour
         PlayerPrefsSafe.SetInt("NowKnifeSkin", knifeButton.Id);
     }
 
-    public void SetShowKnife(KnifeButton knifeButton)
-    {
-        demoKnife.GetComponent<Image>().color = knifeButton.KnifeIcon.color;
-        demoKnife.GetComponent<Image>().sprite = knifeButton.KnifeIcon.sprite;
-    }
-
     private void SetActivePurchasePanel(bool activate)
     {
         purchasePanel.SetActive(activate);
@@ -91,6 +73,8 @@ public class KnifeShop : MonoBehaviour
     public void Initialize()
     {
         int nowKnifeSkinID = PlayerPrefsSafe.GetInt("NowKnifeSkin");
+
+        _randomKnifePrice = randomKnifePrice;
 
         for (int i = 0; i < allKnives.Length; i++)
         {
@@ -106,18 +90,18 @@ public class KnifeShop : MonoBehaviour
         }
 
         if (nonPurchasedKnives.ToArray().Length == 0)
-            unlockRandomKnifeButton.interactable = false;
+            buyRandomKnifeButton.interactable = false;
     }
 
 
-    public void BuyActiveButtonKnife()
+    public void BuyActiveButtonKnife(bool isFree = false)
     {
-        if (_activeButton.Price <= GameManager.coins || isGetingRandomKnife)
+        if (_activeButton.Price <= GameManager.coins || isFree)
         {
-            if (!isGetingRandomKnife)
+            if (!isFree)
             {
                 GameManager.coins -= _activeButton.Price;
-                coinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+                CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
             }
 
             PlayerPrefsSafe.SetInt("KnifeLvl_" + _activeButton.Id, 1);
@@ -127,7 +111,7 @@ public class KnifeShop : MonoBehaviour
             nonPurchasedKnives.Remove(_activeButton);
 
             if (nonPurchasedKnives.ToArray().Length == 0)
-                unlockRandomKnifeButton.interactable = false;
+                buyRandomKnifeButton.interactable = false;
 
             VibrationManager.instance.Vibrate(VibrationType.Success);
         }
@@ -136,23 +120,17 @@ public class KnifeShop : MonoBehaviour
 
     public void BuyRandomKnife()
     {
-        if (GameManager.coins >= randomKnifePrice)
+        if (GameManager.coins >= _randomKnifePrice)
         {
-            GameManager.coins -= randomKnifePrice;
-            coinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+            GameManager.coins -= _randomKnifePrice;
+            CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
 
             if (nonPurchasedKnives.ToArray().Length >= 2)
                 StartCoroutine(RandomKnife());
             else
             {
-                isGetingRandomKnife = true;
-
                 nonPurchasedKnives[0]?.Select();
-                BuyActiveButtonKnife();
-
-                isGetingRandomKnife = false;
-
-                _activeButton.Select();
+                BuyActiveButtonKnife(isFree: true);
             }
         }
     }
@@ -190,11 +168,9 @@ public class KnifeShop : MonoBehaviour
             yield return null;
         }
 
-        BuyActiveButtonKnife();
-
         isGetingRandomKnife = false;
 
-        _activeButton.Select();
+        BuyActiveButtonKnife(isFree: true);
 
         blackOverlay.SetActive(false);
         buttonsOverlay.SetActive(false);
@@ -211,7 +187,7 @@ public class KnifeShop : MonoBehaviour
 
     public void Reward50Coins()
     {
-        StartCoroutine(coinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + 50));
+        StartCoroutine(CoinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + 50));
 
         GameManager.coins += 50;
 

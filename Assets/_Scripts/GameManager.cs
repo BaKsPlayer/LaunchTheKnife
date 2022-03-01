@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenKnivesShop()
     {
-        knivesShop.GetComponent<KnifeShop>().coinsText.text = coins.ToString();
+        knivesShop.GetComponent<KnifeShop>().CoinsText.text = coins.ToString();
 
         knivesShop.GetComponent<KnifeShop>().ResetKnifeShop();
 

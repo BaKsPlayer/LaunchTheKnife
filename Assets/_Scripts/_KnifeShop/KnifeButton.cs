@@ -9,22 +9,22 @@ public class KnifeButton : MonoBehaviour
     [SerializeField] private int id;
     public int Id => id;
 
-    [SerializeField] private int initPrice;
-    private SafeInt price;
-    public int Price => price;
-
-    [SerializeField] private KnifeShop knifeShop;
-    [SerializeField] private KnifeButtonParameters buttonParams;
+    [SerializeField] private int price;
+    private SafeInt _price;
+    public int Price => _price;
 
     [SerializeField] private Image knifeIcon;
     public Image KnifeIcon => knifeIcon;
+
+    [SerializeField] private KnifeShop knifeShop;
+    [SerializeField] private KnifeButtonParameters buttonParams;
 
     [SerializeField] private Sprite colorSprite;
     [SerializeField] private Sprite nonColorSprite;
 
     private void Awake()
     {
-        price = initPrice;
+        _price = price;
 
         knifeIcon = transform.GetChild(0).GetComponent<Image>();
     }
@@ -67,8 +67,7 @@ public class KnifeButton : MonoBehaviour
         else
             SetSelectedButtonPanel(buttonParams.SelectedButtonSprite);
 
-        knifeShop.SetShowKnife(this);
-
+        knifeShop.DemoKnife.SetKnifeImage(this);
     }
 
     private void SetSelectedButtonPanel(Sprite selectedPanel)

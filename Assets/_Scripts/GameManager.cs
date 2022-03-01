@@ -297,7 +297,7 @@ public class GameManager : MonoBehaviour
 
         GetComponent<PlayerController>().nowKnivesNumber = PlayerPrefsSafe.GetInt("KnivesNumber");
 
-        GetComponent<MainSceneKnivesManager>().enabled = false;
+        GetComponent<MainSceneKnifeSpawner>().enabled = false;
 
         Invoke("StartGameWithDelay", 1.85f);
     }
@@ -389,9 +389,9 @@ public class GameManager : MonoBehaviour
 
         mainScene.SetActive(true);
 
-        GetComponent<MainSceneKnivesManager>().enabled = true;
+        GetComponent<MainSceneKnifeSpawner>().enabled = true;
 
-        GetComponent<MainSceneKnivesManager>().timer = 1f;
+        //GetComponent<MainSceneKnifeSpawner>()._timer = 1f;
     }
 
     public void CloseLoseMenuWithDelay()

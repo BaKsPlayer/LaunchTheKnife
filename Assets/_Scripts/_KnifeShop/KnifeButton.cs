@@ -50,15 +50,15 @@ public class KnifeButton : MonoBehaviour
         if (isLocked)
         {
             GetComponent<Animation>()?.Play();
-            VibrationManager.instance.Vibrate(VibrationType.Error);
+            VibrationManager.Instance.Vibrate(VibrationType.Error);
 
             return;
         }
 
         if (PlayerPrefsSafe.GetInt("KnifeLvl_" + Id) == 1)
-            VibrationManager.instance.Vibrate(VibrationType.Medium);
+            VibrationManager.Instance.Vibrate(VibrationType.Medium);
         else
-            VibrationManager.instance.Vibrate(VibrationType.Light);
+            VibrationManager.Instance.Vibrate(VibrationType.Light);
 
         knifeShop.SelectKnife(this);
 

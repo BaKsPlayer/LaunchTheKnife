@@ -11,7 +11,7 @@ public class DemoKnife : MonoBehaviour
     [SerializeField] float rotateSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _transform = transform;
         _image = GetComponent<Image>();

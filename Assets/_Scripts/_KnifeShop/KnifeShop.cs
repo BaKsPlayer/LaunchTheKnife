@@ -91,6 +91,8 @@ public class KnifeShop : MonoBehaviour
 
         if (nonPurchasedKnives.ToArray().Length == 0)
             buyRandomKnifeButton.interactable = false;
+
+        CloseKnifeShop();
     }
 
 
@@ -113,7 +115,7 @@ public class KnifeShop : MonoBehaviour
             if (nonPurchasedKnives.ToArray().Length == 0)
                 buyRandomKnifeButton.interactable = false;
 
-            VibrationManager.instance.Vibrate(VibrationType.Success);
+            VibrationManager.Instance.Vibrate(VibrationType.Success);
         }
 
     }
@@ -194,5 +196,26 @@ public class KnifeShop : MonoBehaviour
         gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
     }
 
+    public void OpenKnifeShop()
+    {
+        CoinsText.text = GameManager.coins.ToString();
+        ResetKnifeShop();
 
+        gameObject.SetActive(true);
+        GetComponent<Animator>().SetTrigger("Open");
+    }
+
+    public void CloseKnifeShop()
+    {
+        GetComponent<Animator>().SetTrigger("Close");
+
+        StartCoroutine(DeactivateKnifeShop(0.5f));
+     }
+
+    private IEnumerator DeactivateKnifeShop(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        gameObject.SetActive(false);
+    }
 }

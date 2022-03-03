@@ -13,19 +13,34 @@ public class SettingsManager : MonoBehaviour
 
     public VibrationManager vibrator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    Animator _animator;
 
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenSettings()
     {
-        
+        gameObject.SetActive(true);
+        _animator.SetTrigger("Open");
     }
 
-    public void InitSettings()
+    public void CloseSettings()
+    {
+        _animator.SetTrigger("Close");
+
+        StartCoroutine(DeactivateSettings(0.5f));
+    }
+
+    private IEnumerator DeactivateSettings(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        gameObject.SetActive(false);
+    }
+
+    public void Initialize()
     {
         if (PlayerPrefsSafe.GetInt("Sound") == 0)
             soundToggle.sprite = toggleOff;

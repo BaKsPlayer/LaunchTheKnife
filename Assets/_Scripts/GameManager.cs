@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     public SafeInt score, coinsForSession;
 
-
     public Text coinsText, nowCostKnifeText, nowCostMoneyText, moneyUpgradeButtonText, knivesUpgradeButtonText, sessionCoinsText;
 
     public static SafeInt coins, nowCostKnifeUpgrade, nowCostMoneyUpgrade;
@@ -33,41 +32,7 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        PlayerPrefs.DeleteAll();
-
-        if (PlayerPrefsSafe.GetInt("IsGameLaunchedYet") != 1)
-        {
-            PlayerPrefsSafe.SetInt("IsGameLaunchedYet", 1);
-
-            PlayerPrefsSafe.SetInt("KnifeLvl_" + 0, 1);
-
-            PlayerPrefsSafe.SetInt("KnivesNumber", 1);
-            PlayerPrefsSafe.SetInt("NowCostKnifeUpgrade", 100);
-
-            PlayerPrefsSafe.SetInt("MoneyForTarget", 10);
-            PlayerPrefsSafe.SetInt("NowCostMoneyUpgrade", 50);
-
-            PlayerPrefsSafe.SetInt("Sound", 0);
-            PlayerPrefsSafe.SetInt("Music", 0);
-            PlayerPrefsSafe.SetInt("Vibration", 1);
-            PlayerPrefsSafe.SetInt("LeftHand", 0);
-        }
-
-        settings.GetComponent<SettingsManager>().InitSettings();
-
-        knivesShop.GetComponent<KnifeShop>().Initialize();
-
-        coins = PlayerPrefsSafe.GetInt("Coins");
-        nowCostMoneyUpgrade = PlayerPrefsSafe.GetInt("NowCostMoneyUpgrade");
-        nowCostKnifeUpgrade = PlayerPrefsSafe.GetInt("NowCostKnifeUpgrade");
-
-        coinsText.text = coins.ToString();
-        nowCostMoneyText.text = nowCostMoneyUpgrade.ToString();
-        nowCostKnifeText.text = nowCostKnifeUpgrade.ToString();
-
-        bestScoreText.text = PlayerPrefsSafe.GetInt("BestScore").ToString();
-
+    { 
         score = 0;
         scoreText.text = score.ToString();
 
@@ -75,9 +40,6 @@ public class GameManager : MonoBehaviour
         sessionCoinsText.text = coinsForSession.ToString();
 
         Application.targetFrameRate = 60;
-
-
-        CloseKnivesShop();
 
         if (PlayerPrefs.HasKey("LastSession"))
             ts = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString("LastSession"));
@@ -91,29 +53,7 @@ public class GameManager : MonoBehaviour
         //CheckUpgrades();
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
 
-#if !UNITY_EDITOR
-    private void OnApplicationFocus(bool focus)
-    {
-        if (!focus)
-            SaveData();
-    }
-#endif
-
-    void SaveData()
-    {
-        PlayerPrefsSafe.SetInt("Coins", coins);
-        PlayerPrefsSafe.SetInt("NowCostMoneyUpgrade", nowCostMoneyUpgrade);
-        PlayerPrefsSafe.SetInt("NowCostKnifeUpgrade", nowCostKnifeUpgrade);
-
-        PlayerPrefsSafe.SetInt("TimeToGift", GetComponent<GiftManager>().timeToGift);
-
-        PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());
-    }
 
     // Update is called once per frame
     void Update()
@@ -126,24 +66,6 @@ public class GameManager : MonoBehaviour
         }
 
 
-    }
-
-
-
-    public void OpenSettings()
-    {
-        settings.SetActive(true);
-
-        settings.GetComponent<Animator>().SetTrigger("Open");
-    }
-
-    public void OpenKnivesShop()
-    {
-        knivesShop.GetComponent<KnifeShop>().CoinsText.text = coins.ToString();
-
-        knivesShop.GetComponent<KnifeShop>().ResetKnifeShop();
-
-        knivesShop.SetActive(true);
     }
 
     public void OpenRateUs()
@@ -241,35 +163,6 @@ public class GameManager : MonoBehaviour
         itDoesntWork.SetTrigger("Show");
     }
 
-    public void CloseSettings()
-    {
-        //settings.SetActive(false);
-
-        settings.GetComponent<Animator>().SetTrigger("Close");
-
-        Invoke("CloseSettingsWithDelay", 0.5f);
-    }
-
-    public void CloseSettingsWithDelay()
-    {
-        settings.SetActive(false);
-
-    }
-
-    public void CloseKnivesShop()
-    {
-        knivesShop.GetComponent<Animator>().SetTrigger("Close");
-
-        Invoke("CloseKnivesShopWithDelay", 0.5f);
-
-        CheckUpgrades();
-    }
-
-    public void CloseKnivesShopWithDelay()
-    {
-        knivesShop.SetActive(false);
-
-    }
 
     public void OpenLoseMenu()
     {
@@ -278,7 +171,6 @@ public class GameManager : MonoBehaviour
 
         loseMenu.SetActive(true);
         loseMenu.GetComponent<LoseMenuManager>().SetLoseMenu();
-
 
     }
 

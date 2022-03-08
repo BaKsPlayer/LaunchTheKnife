@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Wallet : MonoBehaviour
+public class Wallet
 {
     public int Coins { get; private set; }
 
@@ -13,28 +13,11 @@ public class Wallet : MonoBehaviour
     {
         get
         {
+            if (instance == null)
+                instance = new Wallet();
+
             return instance;
         }
-
-        private set
-        {
-            instance = value;
-        }
-    }
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            if (Instance != this)
-                Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-
     }
 
     public void AddCoins(int amount)
@@ -48,7 +31,5 @@ public class Wallet : MonoBehaviour
         Coins -= amount;
         OnValueChanged?.Invoke();
     }
-
-
     
 }

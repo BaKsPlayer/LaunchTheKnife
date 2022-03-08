@@ -1,41 +1,49 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager
 {
-    public static void SaveData()
+    [SerializeField] private List<KnifeImprover> knifeImprovers = new List<KnifeImprover>();
+
+    private static SaveManager instance;
+    public static SaveManager Instance
     {
-        PlayerPrefsSafe.SetInt("Coins", GameManager.coins);
-        PlayerPrefsSafe.SetInt("NowCostMoneyUpgrade", GameManager.nowCostMoneyUpgrade);
-        PlayerPrefsSafe.SetInt("NowCostKnifeUpgrade", GameManager.nowCostKnifeUpgrade);
+        get
+        {
+            if (instance == null)
+                instance = new SaveManager();
+
+            return instance;
+        }
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefsSafe.SetInt("Coins", Wallet.Instance.Coins);
+
+        foreach (var knifeImprover in knifeImprovers)
+        {
+            PlayerPrefsSafe.SetInt(knifeImprover.ImprovementType + "LVL", knifeImprover.Lvl);
+        }
 
         //PlayerPrefsSafe.SetInt("TimeToGift", GetComponent<GiftManager>().timeToGift);
 
         PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());
 
+        Debug.Log("Data Saved");
+
     }
 
-    public static void LoadData()
+    public void LoadData()
     {
-        Debug.Log("Data Loaded");
-
         Wallet.Instance.AddCoins(PlayerPrefsSafe.GetInt("Coins"));
 
-        GameManager.coins = PlayerPrefsSafe.GetInt("Coins");
-        GameManager.nowCostMoneyUpgrade = PlayerPrefsSafe.GetInt("NowCostMoneyUpgrade");
-        GameManager.nowCostKnifeUpgrade = PlayerPrefsSafe.GetInt("NowCostKnifeUpgrade");
+        Debug.Log("Data Loaded");
     }
 
-    private void OnApplicationQuit()
+    public void AddKnifeImprover(KnifeImprover knifeImprover)
     {
-        SaveData();
+        knifeImprovers.Add(knifeImprover);
     }
-
-#if !UNITY_EDITOR
-    private void OnApplicationFocus(bool focus)
-    {
-        if (!focus)
-            SaveData();
-    }
-#endif
 }

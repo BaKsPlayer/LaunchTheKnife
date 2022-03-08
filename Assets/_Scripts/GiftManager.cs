@@ -85,7 +85,7 @@ public class GiftManager : MonoBehaviour
 
             GameManager.coins += 150;
 
-            GetComponent<GameManager>().CheckUpgrades();
+            //GetComponent<GameManager>().CheckUpgrades();
 
             giftButton.GetComponent<Image>().sprite = inactiveGift;
             isGiftReady = false;

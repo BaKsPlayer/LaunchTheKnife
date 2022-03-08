@@ -10,22 +10,20 @@ public class GameInitializer : MonoBehaviour
     private void Start()
     {
         if (PlayerPrefsSafe.GetInt("IsGameLaunchedYet") != 1)
-            InitOnFirsLaunch();
+            InitOnFirstLaunch();
 
         settings.Initialize();
         knifeShop.Initialize();
 
-        SaveManager.LoadData();
+        SaveManager.Instance.LoadData();
 
-        gameManager.coinsText.text = GameManager.coins.ToString();
-        gameManager.nowCostMoneyText.text = GameManager.nowCostMoneyUpgrade.ToString();
-        gameManager.nowCostKnifeText.text = GameManager.nowCostKnifeUpgrade.ToString();
+        gameManager.coinsText.text = Wallet.Instance.Coins.ToString();
 
         gameManager.bestScoreText.text = PlayerPrefsSafe.GetInt("BestScore").ToString();
     }
 
 
-    private void InitOnFirsLaunch()
+    private void InitOnFirstLaunch()
     {
         PlayerPrefsSafe.SetInt("IsGameLaunchedYet", 1);
 
@@ -42,4 +40,17 @@ public class GameInitializer : MonoBehaviour
         PlayerPrefsSafe.SetInt("Vibration", 1);
         PlayerPrefsSafe.SetInt("LeftHand", 0);
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveManager.Instance.SaveData();
+    }
+
+#if !UNITY_EDITOR
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+            SaveManager.Instance.SaveData();
+    }
+#endif
 }

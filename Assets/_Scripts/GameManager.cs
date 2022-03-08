@@ -61,11 +61,26 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.C))
         {
-            coins += 1000;
-            coinsText.text = coins.ToString();
+            Wallet.Instance.AddCoins(100);
+            coinsText.text = Wallet.Instance.Coins.ToString();
         }
 
 
+    }
+
+    private void OnEnable()
+    {
+        Wallet.Instance.OnValueChanged += CoinsChanged;
+    }
+
+    private void OnDisable()
+    {
+        Wallet.Instance.OnValueChanged -= CoinsChanged;
+    }
+
+    private void CoinsChanged()
+    {
+        coinsText.text = Wallet.Instance.Coins.ToString();
     }
 
     public void OpenRateUs()
@@ -76,86 +91,6 @@ public class GameManager : MonoBehaviour
     public void OpenLeaderboard()
     {
         itDoesntWork.SetTrigger("Show");
-    }
-
-    public void UpgradeKnivesNumber()
-    {
-        if (coins >= nowCostKnifeUpgrade)
-        {
-            coins -= nowCostKnifeUpgrade;
-
-            nowCostKnifeUpgrade = (SafeInt)(nowCostKnifeUpgrade * 2f);
-
-            PlayerPrefsSafe.SetInt("KnivesNumber", PlayerPrefsSafe.GetInt("KnivesNumber") + 1);
-
-            coinsText.text = coins.ToString();
-            nowCostKnifeText.text = nowCostKnifeUpgrade.ToString();
-
-            CheckUpgrades();
-
-            vibrator.Vibrate(VibrationType.Success);
-        }
-
-    }
-
-    public void UpgradeMoneyForTarget()
-    {
-        if (coins >= nowCostMoneyUpgrade)
-        {
-            coins -= nowCostMoneyUpgrade;
-
-            nowCostMoneyUpgrade = (SafeInt)(nowCostMoneyUpgrade * 1.1f);
-
-            PlayerPrefsSafe.SetInt("MoneyForTarget", PlayerPrefsSafe.GetInt("MoneyForTarget") + 2);
-
-            coinsText.text = coins.ToString();
-            nowCostMoneyText.text = nowCostMoneyUpgrade.ToString();
-
-            CheckUpgrades();
-
-            vibrator.Vibrate(VibrationType.Success);
-        }
-    }
-
-    public void CheckUpgrades()
-    {
-        if (coins < nowCostMoneyUpgrade)
-        {
-            moneyUpgradeButton.sprite = inactiveUpgrade;
-
-            moneyUpgradeButton.transform.GetChild(1).gameObject.SetActive(false);
-            moneyUpgradeButton.transform.GetChild(2).gameObject.SetActive(true);
-
-            moneyUpgradeButton.transform.GetChild(2).GetComponent<Text>().text = "x" + PlayerPrefsSafe.GetInt("MoneyForTarget") + "<size=42>+2</size>";
-        }
-        else
-        {
-            moneyUpgradeButton.sprite = activeUpgrade;
-
-            moneyUpgradeButton.transform.GetChild(1).gameObject.SetActive(true);
-            moneyUpgradeButton.transform.GetChild(2).gameObject.SetActive(false);
-
-            moneyUpgradeButton.transform.GetChild(1).GetComponent<Text>().text = "x" + PlayerPrefsSafe.GetInt("MoneyForTarget") + "<size=42>+2</size>";
-        }
-
-        if (coins < nowCostKnifeUpgrade)
-        {
-            knivesUpgradeButton.sprite = inactiveUpgrade;
-
-            knivesUpgradeButton.transform.GetChild(1).gameObject.SetActive(false);
-            knivesUpgradeButton.transform.GetChild(2).gameObject.SetActive(true);
-
-            knivesUpgradeButton.transform.GetChild(2).GetComponent<Text>().text = "x" + PlayerPrefsSafe.GetInt("KnivesNumber") + "<size=42>+1</size>";
-        }
-        else
-        {
-            knivesUpgradeButton.sprite = activeUpgrade;
-
-            knivesUpgradeButton.transform.GetChild(1).gameObject.SetActive(true);
-            knivesUpgradeButton.transform.GetChild(2).gameObject.SetActive(false);
-
-            knivesUpgradeButton.transform.GetChild(1).GetComponent<Text>().text = "x" + PlayerPrefsSafe.GetInt("KnivesNumber") + "<size=42>+1</size>";
-        }
     }
 
     public void OpenShop()
@@ -270,7 +205,7 @@ public class GameManager : MonoBehaviour
         if (GetComponent<StudyManager>())
             GetComponent<StudyManager>().disabling = false;
 
-        CheckUpgrades();
+        //CheckUpgrades();
 
         inGame.SetActive(false);
 

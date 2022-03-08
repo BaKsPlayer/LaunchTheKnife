@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SaveManager
 {
-    [SerializeField] private List<KnifeImprover> knifeImprovers = new List<KnifeImprover>();
+
+    public event Action OnSaveData;
 
     private static SaveManager instance;
     public static SaveManager Instance
@@ -21,18 +22,10 @@ public class SaveManager
     public void SaveData()
     {
         PlayerPrefsSafe.SetInt("Coins", Wallet.Instance.Coins);
-
-        foreach (var knifeImprover in knifeImprovers)
-        {
-            PlayerPrefsSafe.SetInt(knifeImprover.ImprovementType + "LVL", knifeImprover.Lvl);
-        }
-
-        //PlayerPrefsSafe.SetInt("TimeToGift", GetComponent<GiftManager>().timeToGift);
-
         PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());
+        OnSaveData?.Invoke();
 
         Debug.Log("Data Saved");
-
     }
 
     public void LoadData()
@@ -40,10 +33,6 @@ public class SaveManager
         Wallet.Instance.AddCoins(PlayerPrefsSafe.GetInt("Coins"));
 
         Debug.Log("Data Loaded");
-    }
+     }
 
-    public void AddKnifeImprover(KnifeImprover knifeImprover)
-    {
-        knifeImprovers.Add(knifeImprover);
-    }
 }

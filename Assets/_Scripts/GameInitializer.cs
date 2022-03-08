@@ -4,6 +4,7 @@ public class GameInitializer : MonoBehaviour
 {
     [SerializeField] private SettingsManager settings;
     [SerializeField] private KnifeShop knifeShop;
+    [SerializeField] private GameObject startScreen;
 
     public GameManager gameManager;
 
@@ -20,6 +21,10 @@ public class GameInitializer : MonoBehaviour
         gameManager.coinsText.text = Wallet.Instance.Coins.ToString();
 
         gameManager.bestScoreText.text = PlayerPrefsSafe.GetInt("BestScore").ToString();
+
+        Application.targetFrameRate = 60;
+
+        Destroy(startScreen, 0.6f);
     }
 
 
@@ -29,16 +34,7 @@ public class GameInitializer : MonoBehaviour
 
         PlayerPrefsSafe.SetInt("KnifeLvl_" + 0, 1);
 
-        PlayerPrefsSafe.SetInt("KnivesNumber", 1);
-        PlayerPrefsSafe.SetInt("NowCostKnifeUpgrade", 100);
-
-        PlayerPrefsSafe.SetInt("MoneyForTarget", 10);
-        PlayerPrefsSafe.SetInt("NowCostMoneyUpgrade", 50);
-
-        PlayerPrefsSafe.SetInt("Sound", 0);
-        PlayerPrefsSafe.SetInt("Music", 0);
-        PlayerPrefsSafe.SetInt("Vibration", 1);
-        PlayerPrefsSafe.SetInt("LeftHand", 0);
+        settings.FirstLaunchInitialize();
     }
 
     private void OnApplicationQuit()

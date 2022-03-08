@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour
     public Sprite activeUpgrade, inactiveUpgrade;
 
     public TimeSpan ts;
-
-    VibrationManager vibrator;
-
     
 
     // Start is called before the first frame update
@@ -39,18 +36,6 @@ public class GameManager : MonoBehaviour
         coinsForSession = 0;
         sessionCoinsText.text = coinsForSession.ToString();
 
-        Application.targetFrameRate = 60;
-
-        if (PlayerPrefs.HasKey("LastSession"))
-            ts = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString("LastSession"));
-
-        GetComponent<GiftManager>().CheckGift((int)ts.TotalSeconds);
-
-        vibrator = GetComponent<VibrationManager>();
-
-		Destroy(startScreen, 0.6f);
-
-        //CheckUpgrades();
     }
 
 
@@ -81,21 +66,6 @@ public class GameManager : MonoBehaviour
     private void CoinsChanged()
     {
         coinsText.text = Wallet.Instance.Coins.ToString();
-    }
-
-    public void OpenRateUs()
-    {
-        itDoesntWork.SetTrigger("Show");
-    }
-
-    public void OpenLeaderboard()
-    {
-        itDoesntWork.SetTrigger("Show");
-    }
-
-    public void OpenShop()
-    {
-        itDoesntWork.SetTrigger("Show");
     }
 
 

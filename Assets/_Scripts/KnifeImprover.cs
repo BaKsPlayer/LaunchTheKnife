@@ -43,8 +43,6 @@ public class KnifeImprover : MonoBehaviour
     private void OnEnable()
     {
         Wallet.Instance.OnValueChanged += CoinsChanged;
-
-        Debug.Log($"KnifeImprover({improvementType}) subscribed");
     }
 
     private void OnDisable()
@@ -67,7 +65,7 @@ public class KnifeImprover : MonoBehaviour
             priceMultiplier = 1.1f;
             improvementValue = 2;
 
-            startValue = 50;
+            startValue = 10;
         }
 
         lvl = PlayerPrefsSafe.GetInt(ImprovementType + "LVL");
@@ -79,7 +77,7 @@ public class KnifeImprover : MonoBehaviour
         priceText.text = price.ToString();
         buttonText.text = $"x{currentValue}<size=42>+{improvementValue}</size>";
 
-        SaveManager.Instance.AddKnifeImprover(this);
+        SaveManager.Instance.OnSaveData += SaveData;
     }
 
     public void Improve()
@@ -121,5 +119,15 @@ public class KnifeImprover : MonoBehaviour
     private SafeInt GetPrice()
     {
         return (SafeInt)(startPrice * Mathf.Pow(priceMultiplier, lvl));
+    }
+
+    private void SaveData()
+    {
+        PlayerPrefsSafe.SetInt(ImprovementType + "LVL", Lvl);
+    }
+
+    private void OnDestroy()
+    {
+        SaveManager.Instance.OnSaveData -= SaveData;
     }
 }

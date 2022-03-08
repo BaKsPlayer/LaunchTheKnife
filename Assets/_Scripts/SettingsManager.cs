@@ -71,6 +71,14 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
+    public void FirstLaunchInitialize()
+    {
+        PlayerPrefsSafe.SetInt("Sound", 0);
+        PlayerPrefsSafe.SetInt("Music", 0);
+        PlayerPrefsSafe.SetInt("Vibration", 1);
+        PlayerPrefsSafe.SetInt("LeftHand", 0);
+    }
+
     public void ToggleSound()
     {
         if (PlayerPrefsSafe.GetInt("Sound") == 0)

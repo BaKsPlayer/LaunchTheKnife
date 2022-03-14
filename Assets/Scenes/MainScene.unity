@@ -1567,7 +1567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &116454124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3898,9 +3898,9 @@ RectTransform:
   m_Father: {fileID: 973708175}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 97, y: -27}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221023210
@@ -3978,7 +3978,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 125, y: -52}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 170, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242414446
 MonoBehaviour:
@@ -4395,7 +4395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 765053907}
+  m_Material: {fileID: 1545691306}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -5455,16 +5455,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenShop
-        m_Mode: 1
+      - m_Target: {fileID: 564466206}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Show
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &355994571
@@ -6365,7 +6365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &413520147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6754,6 +6754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 334861762}
   knifeShop: {fileID: 413520148}
+  startScreen: {fileID: 131721899}
   gameManager: {fileID: 1559415543}
 --- !u!4 &432692295
 Transform:
@@ -7029,7 +7030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1065686875}
+  m_Material: {fileID: 799388370}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -8685,9 +8686,9 @@ RectTransform:
   m_Father: {fileID: 242414445}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -34.5}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555441164
@@ -9773,10 +9774,10 @@ RectTransform:
   m_Father: {fileID: 1687594129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60.5, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60.5, y: -36.5}
+  m_SizeDelta: {x: 109, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661875028
 MonoBehaviour:
@@ -11681,42 +11682,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
   m_PrefabInstance: {fileID: 608997490}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &765053907
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &765471488
 GameObject:
   m_ObjectHideFlags: 0
@@ -11749,9 +11714,9 @@ RectTransform:
   m_Father: {fileID: 780914282}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 152, y: -36.5}
   m_SizeDelta: {x: 72, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765471490
@@ -11866,7 +11831,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 50.6, y: 6}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 188, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780914283
 MonoBehaviour:
@@ -12209,6 +12174,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795321005}
   m_CullTransparentMesh: 1
+--- !u!21 &799388370
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &804055627
 GameObject:
   m_ObjectHideFlags: 0
@@ -12222,6 +12223,7 @@ GameObject:
   - component: {fileID: 804055631}
   - component: {fileID: 804055630}
   - component: {fileID: 804055629}
+  - component: {fileID: 804055633}
   m_Layer: 5
   m_Name: Gift_Button
   m_TagString: Untagged
@@ -12312,8 +12314,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415547}
-        m_TargetAssemblyTypeName: GiftManager, Assembly-CSharp
+      - m_Target: {fileID: 804055633}
+        m_TargetAssemblyTypeName: Gift, Assembly-CSharp
         m_MethodName: GetGift
         m_Mode: 1
         m_Arguments:
@@ -12362,6 +12364,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804055627}
   m_CullTransparentMesh: 1
+--- !u!114 &804055633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804055627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8db1e8d42164ff29c87a45d3b56ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 150
+  giftOverlay: {fileID: 423281104}
+  giftText: {fileID: 1100386949}
+  remainingTimeText: {fileID: 1598468345}
+  coinsFiller: {fileID: 1177291040}
+  buttonImage: {fileID: 1840872691}
+  activeGiftSprite: {fileID: 4912093664294329862, guid: cc3242b18660648c683034de07a22804, type: 3}
+  inactiveGiftSprite: {fileID: -5182363686814160567, guid: cc3242b18660648c683034de07a22804, type: 3}
 --- !u!1 &808358553
 GameObject:
   m_ObjectHideFlags: 0
@@ -12477,10 +12499,10 @@ RectTransform:
   m_Father: {fileID: 242414445}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 58, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 58, y: -34.5}
+  m_SizeDelta: {x: 98, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813725734
 MonoBehaviour:
@@ -12585,7 +12607,6 @@ MonoBehaviour:
   knivesPool:
   - {fileID: 171059346}
   - {fileID: 761100259}
-  - {fileID: 0}
   knifePrefab: {fileID: 1709469296755922404, guid: 5b5f53329265f4bfb866c57b3b9358e1, type: 3}
   knifeSprites:
   - {fileID: -5723618315912617923, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
@@ -12957,6 +12978,90 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &877585299
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4946980559927483193, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_Name
+      value: GameKnife
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+--- !u!1 &877585300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4946980559927483193, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
+  m_PrefabInstance: {fileID: 877585299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &877585301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877585300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb152cb8a9fe84c26810207124b97295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rewardText: {fileID: 0}
+  moneyPerHitImprover: {fileID: 0}
+  knivesNumberImprover: {fileID: 0}
+  movingState: {fileID: 0}
+  standingState: {fileID: 0}
+  flyingState: {fileID: 0}
+  flightSpeed: 0
+  moveSpeed: 0
+  rotateSpeed: 0
 --- !u!1 &879614712
 GameObject:
   m_ObjectHideFlags: 0
@@ -13877,16 +13982,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenRateUs
-        m_Mode: 1
+      - m_Target: {fileID: 564466206}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Showq
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &933844245
@@ -14113,9 +14218,9 @@ RectTransform:
   m_Father: {fileID: 1439086102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 97, y: -25}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954917334
@@ -14273,7 +14378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -102, y: -156.09998}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 122, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973708176
 MonoBehaviour:
@@ -15450,10 +15555,10 @@ RectTransform:
   m_Father: {fileID: 973708175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.5, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 34.5, y: -27}
+  m_SizeDelta: {x: 69, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065574051
 MonoBehaviour:
@@ -15511,42 +15616,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!21 &1065686875
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1071819564
 GameObject:
   m_ObjectHideFlags: 0
@@ -15960,8 +16029,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 76.55842, y: -35.4662}
-  m_SizeDelta: {x: 174.81885, y: 74.27537}
+  m_AnchoredPosition: {x: 76.63775, y: -35.4662}
+  m_SizeDelta: {x: 175, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100386947
 MonoBehaviour:
@@ -16380,9 +16449,9 @@ RectTransform:
   m_Father: {fileID: 707727753}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -15}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116916092
@@ -18159,7 +18228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.58304, y: -35.4662}
+  m_AnchoredPosition: {x: 176.7417, y: -35.4662}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251615746
@@ -18370,7 +18439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1258953441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18391,7 +18460,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.72}
   m_AnchorMax: {x: 0.5, y: 0.72}
   m_AnchoredPosition: {x: 0, y: 1068}
-  m_SizeDelta: {x: 200.14896, y: 70.9324}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1258953442
 Animation:
@@ -18482,10 +18551,10 @@ RectTransform:
   m_Father: {fileID: 1258953441}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70.60828, y: -35.4662}
-  m_SizeDelta: {x: 161.23189, y: 74.27537}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1263111473
 MonoBehaviour:
@@ -18912,16 +18981,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenLeaderboard
-        m_Mode: 1
+      - m_Target: {fileID: 564466206}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Show
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1270959369
@@ -20522,7 +20591,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 102, y: -156.09998}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 122, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1439086103
 MonoBehaviour:
@@ -22473,10 +22542,10 @@ RectTransform:
   m_Father: {fileID: 1439086102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.5, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 34.5, y: -27}
+  m_SizeDelta: {x: 69, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535854416
 MonoBehaviour:
@@ -22534,6 +22603,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!21 &1545691306
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1559415541
 GameObject:
   m_ObjectHideFlags: 0
@@ -22546,7 +22651,6 @@ GameObject:
   - component: {fileID: 1559415543}
   - component: {fileID: 1559415544}
   - component: {fileID: 1559415545}
-  - component: {fileID: 1559415547}
   - component: {fileID: 1559415548}
   m_Layer: 0
   m_Name: GameManager
@@ -22712,25 +22816,6 @@ MonoBehaviour:
   loseMenu: {fileID: 430527663}
   knifeShop: {fileID: 413520146}
   shopButton: {fileID: 1163562905}
---- !u!114 &1559415547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559415541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f8db1e8d42164ff29c87a45d3b56ecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGiftReady: 0
-  giftButton: {fileID: 1840872689}
-  rewardText: {fileID: 1577014489}
-  timerText: {fileID: 1598468345}
-  coinsText: {fileID: 1177291040}
-  activeGift: {fileID: 4912093664294329862, guid: cc3242b18660648c683034de07a22804, type: 3}
-  inactiveGift: {fileID: -5182363686814160567, guid: cc3242b18660648c683034de07a22804, type: 3}
 --- !u!114 &1559415548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22861,7 +22946,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.72}
   m_AnchorMax: {x: 0.5, y: 0.72}
   m_AnchoredPosition: {x: 0, y: -1599}
-  m_SizeDelta: {x: 212.04924, y: 70.9324}
+  m_SizeDelta: {x: 212.2079, y: 70.9324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1577014491
 MonoBehaviour:
@@ -23595,9 +23680,9 @@ RectTransform:
   m_Father: {fileID: 1258953441}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 164.68275, y: -35.4662}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631151555
@@ -24306,7 +24391,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 193, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687594130
 MonoBehaviour:
@@ -24565,7 +24650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1717204400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25717,16 +25802,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenShop
-        m_Mode: 1
+      - m_Target: {fileID: 564466206}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Show
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1781276212
@@ -26466,9 +26551,9 @@ RectTransform:
   m_Father: {fileID: 1687594129}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 157, y: -36.5}
   m_SizeDelta: {x: 72, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859800766
@@ -27266,10 +27351,10 @@ RectTransform:
   m_Father: {fileID: 780914282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 58, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 58, y: -36.5}
+  m_SizeDelta: {x: 104, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906803032
 MonoBehaviour:
@@ -28898,7 +28983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   improvementType: 1
-  StartPrice: 100
+  StartPrice: 50
   priceText: {fileID: 1065574051}
   buttonImage: {fileID: 1774423127}
   buttonText: {fileID: 442460028}

@@ -23,6 +23,9 @@ public class SaveManager
     {
         PlayerPrefsSafe.SetInt("Coins", Wallet.Instance.Coins);
         PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());
+
+        PlayerPrefsSafe.SetInt("BestScore", GameStats.Instance.BestScore);
+
         OnSaveData?.Invoke();
 
         Debug.Log("Data Saved");
@@ -31,6 +34,7 @@ public class SaveManager
     public void LoadData()
     {
         Wallet.Instance.AddCoins(PlayerPrefsSafe.GetInt("Coins"));
+        GameStats.Instance.SetBestScore(PlayerPrefsSafe.GetInt("BestScore"));
 
         Debug.Log("Data Loaded");
      }

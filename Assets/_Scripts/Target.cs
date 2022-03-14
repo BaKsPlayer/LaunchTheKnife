@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,54 +6,102 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
 
-    public bool isTargetMove, isWaiting;
+    public bool isMove, isWaiting;
 
-    public float range, startSpeed, delay, startPos;
+    public float range, moveSpeed, delay, startPos;
 
     float timer = 0, distance;
 
     public int dir;
 
+    public Animator m_Animator => GetComponent<Animator>();
+
+    public event Action OnHit;
+
+    [Range(0,100)]
+    [SerializeField] private float scaleOffset;
+
+    private Vector2 originalScale;
+
+    private Transform _parentTransform;
+
+    private void Start()
+    {
+        originalScale = transform.localScale;
+
+        _parentTransform = transform.parent;
+    }
 
     private void Update()
     {
-        if (isTargetMove)
+        Move();
+    }
+
+    private void Move()
+    {
+        if (!isMove)
+            return;
+
+        if (distance > 0)
         {
+            float f = (distance + 1) / 5;
+            float f1 = (range - distance + 1) / 5;
 
-            if (isWaiting)
-                if (timer <= 0)
-                {
-                    isWaiting = false;
+            float speed = moveSpeed * Mathf.Clamp(f, 0.2f, 1f) * Mathf.Clamp(f1, 0.2f, 1f) ;
 
-                    dir = -dir;
+            distance -= speed * Time.deltaTime;
 
-                    distance = range;
-                }
-                else timer -= Time.deltaTime;
-            else if (distance > 0)
-            {
-                //float f = (Mathf.Abs(range/2)-distance)/(range/2);
+            _parentTransform.Rotate(Vector3.forward * speed * Time.deltaTime * dir);
+        }
+        else
+        {
+            dir = -dir;
+            distance = range;
+        }
 
-                //float f = 1 - (Mathf.Abs(distance - (range / 2)) / (range / 2));
+        
+    }
 
-                float f = (distance + 1) / 5;
-                float f1 = (range - distance + 1) / 5;
+    public void Create()
+    {
+        float rotZ = UnityEngine.Random.Range(-180f, 180f);
+        _parentTransform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-                float speed = startSpeed * Mathf.Clamp(f, 0.2f, 1f) * Mathf.Clamp(f1, 0.2f, 1f);
+        float randomScaleOffset = UnityEngine.Random.Range(-scaleOffset, scaleOffset);
+        float offset = 1 - (randomScaleOffset / 100);
 
+        transform.localScale = new Vector2(originalScale.x * offset, originalScale.y * offset);
 
-                distance -= speed * Time.deltaTime;
+        isMove = false;
 
-                transform.parent.Rotate(Vector3.forward * speed * Time.deltaTime * dir);
-            }
-            else if (distance <= 0)
-            {
-                timer = delay;
+        if (GameStats.Instance.Score <= 6)
+            return;
 
-                isWaiting = true;
-            }
+        if (UnityEngine.Random.Range(0,2) == 0)
+        {
+            isMove = true;
+
+            isWaiting = true;
+
+            range = UnityEngine.Random.Range(40f, 60f);
+            delay = 0;
+            moveSpeed = 25;
+
+            dir = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
 
         }
+    }
+
+
+    public void Hit()
+    {
+        OnHit?.Invoke();
+
+    }
+
+    public void Stop()
+    {
+        throw new NotImplementedException();
     }
 
 }

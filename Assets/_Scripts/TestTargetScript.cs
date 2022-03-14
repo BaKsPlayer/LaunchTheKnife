@@ -29,19 +29,19 @@ public class TestTargetScript : MonoBehaviour
 
             //print(hit.transform);
 
-            if (hit.transform != null)
-            {
+            //if (hit.transform != null)
+            //{
+
+            if (!hit)
+                return;
 
                 if (hit.collider.tag == "Target")
                     print("(" + hit.point.x + ", " + hit.point.y + "), Distance - " + Vector2.Distance(new Vector2(hit.point.x, hit.point.y), target.transform.position));
                 else if (hit.collider.tag == "TargetBack")
                     print("Ты не туда попал! Не лезьте блять в хипхоп!");
 
-
-
-
-            }
-            else Debug.Log("NULL");
+            //}
+            //else Debug.Log("NULL");
         }
     }
 }

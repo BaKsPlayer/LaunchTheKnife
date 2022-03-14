@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         float nowK = (float)Screen.width / (float)Screen.height;
         float originalK = 1125f / 2435f;
 
@@ -218,9 +218,9 @@ public class PlayerController : MonoBehaviour
 
             hit = Physics2D.Raycast(nowKnife.transform.position, nowKnife.transform.GetChild(0).position - nowKnife.transform.position, 100, toHit);
 
-            isTargetMoveMemory = target.GetComponent<Target>().isTargetMove;
+            isTargetMoveMemory = target.GetComponent<Target>().isMove;
 
-            target.GetComponent<Target>().isTargetMove = false;
+            target.GetComponent<Target>().isMove = false;
 
             //print(hit.transform);
 
@@ -367,13 +367,13 @@ public class PlayerController : MonoBehaviour
         if (gameManager.score >= 6)
             if (Random.Range(0, 2) == 1)
             {
-                target.GetComponent<Target>().isTargetMove = true;
+                target.GetComponent<Target>().isMove = true;
 
                 target.GetComponent<Target>().isWaiting = true;
 
                 target.GetComponent<Target>().range = Random.Range(40f, 60f);
                 target.GetComponent<Target>().delay = 0;
-                target.GetComponent<Target>().startSpeed = 25;
+                target.GetComponent<Target>().moveSpeed = 25;
 
                 if (Random.Range(0, 2) == 0)
                     target.GetComponent<Target>().dir = 1;
@@ -381,9 +381,9 @@ public class PlayerController : MonoBehaviour
                     target.GetComponent<Target>().dir = -1;
             }
             else
-                target.GetComponent<Target>().isTargetMove = false;
+                target.GetComponent<Target>().isMove = false;
         else
-            target.GetComponent<Target>().isTargetMove = false;
+            target.GetComponent<Target>().isMove = false;
 
         target.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 1;
 
@@ -443,7 +443,7 @@ public class PlayerController : MonoBehaviour
 
             isTimeToNewKnife = false;
 
-            target.GetComponent<Target>().isTargetMove = isTargetMoveMemory;
+            target.GetComponent<Target>().isMove = isTargetMoveMemory;
         }
 
 

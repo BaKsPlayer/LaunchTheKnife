@@ -27,7 +27,7 @@ public class KnifeImprover : MonoBehaviour
     private SafeInt improvementValue;
 
     private SafeInt currentValue;
-    public SafeInt CurerntValue => currentValue;
+    public SafeInt CurrentValue => currentValue;
 
     private SafeInt price;
     private SafeFloat priceMultiplier;

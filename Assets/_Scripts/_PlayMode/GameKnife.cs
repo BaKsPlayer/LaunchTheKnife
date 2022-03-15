@@ -6,13 +6,13 @@ public class GameKnife : MonoBehaviour
     [SerializeField] private Target target;
     public Target Target => target;
 
-    [SerializeField] private Text rewardText;
-    public Text RewardText => rewardText;
-
     [SerializeField] private KnifeImprover moneyPerHitImprover;
     public int CoinsPerHit => moneyPerHitImprover.CurrentValue;
 
     [SerializeField] private KnifeImprover knivesNumberImprover;
+
+    [SerializeField] private LoseMenuManager loseMenu;
+    [SerializeField] private TapHandler tapHandler;
 
     [SerializeField] private State movingState;
     [SerializeField] private State standingState;
@@ -30,7 +30,7 @@ public class GameKnife : MonoBehaviour
 
     [SerializeField] private LayerMask toHit;
 
-    public Vector3 CenterPosition => new Vector2(0, 1.57f);
+    public Vector2 CenterPosition => new Vector2(0, 1.57f);
     public Transform m_Transform{ get; private set; }
 
     private State CurrentState;
@@ -41,10 +41,12 @@ public class GameKnife : MonoBehaviour
     private int spawnIndex;
     private float currentFlightSpeed;
 
+    private int leftKnivesCount;
+
     private RaycastHit2D hit;
     public RaycastHit2D Hit => hit;
 
-
+    public Vector2 Position => m_Transform.position;
 
     public Transform finalPoint
     {
@@ -62,7 +64,6 @@ public class GameKnife : MonoBehaviour
 
     private void Update()
     {
-        m_Transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
         CurrentState.Update();
     }
 
@@ -78,6 +79,8 @@ public class GameKnife : MonoBehaviour
         SetState(flyingState);
         hit = Physics2D.Raycast(m_Transform.position, m_Transform.GetChild(0).position - m_Transform.position, 100, toHit);
         target.Stop();
+
+        tapHandler.enabled = false;
     }
 
     public void Fly()
@@ -95,25 +98,29 @@ public class GameKnife : MonoBehaviour
         m_Transform.position = Vector3.MoveTowards(m_Transform.position, target, speed * Time.deltaTime);
     }
 
+    public void Rotate()
+    {
+       m_Transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+    }
+
     public void HitTarget()
     {
         VibrationManager.Instance.Vibrate(VibrationType.Heavy);
-
         currentFlightSpeed = 0;
-
-        rewardText.text = $"+{moneyPerHitImprover.CurrentValue} ";
-
-        rewardText.transform.parent.gameObject.SetActive(true);
-        rewardText.transform.parent.GetComponent<Animation>().Play();
-
-        target.m_Animator.SetTrigger("Hit");
-        target.m_Animator.SetTrigger("Change");
-
         target.Hit();
     }
 
+    public void LoseKnife()
+    {
+        leftKnivesCount--;
 
-    public void SpawnKnife()
+        if (leftKnivesCount >= 0)
+            Spawn();
+        else
+            loseMenu.Activate();
+    }
+
+    public void Spawn()
     {
         spawnIndex = Random.Range(0, 2);
         m_Transform.position = spawns[spawnIndex].position;
@@ -129,15 +136,23 @@ public class GameKnife : MonoBehaviour
 
     public void CalculateCoinsMultiplyer()
     {
-        float distanceFromCenter = Vector2.Distance(hit.point, target.transform.position);
+        float distanceFromTargetCenter = Vector2.Distance(hit.point, target.transform.position);
 
-        if (distanceFromCenter <= 0.09f)
+        if (distanceFromTargetCenter <= 0.09f)
             coinsMultiplyer = 2f;
-        else if (distanceFromCenter <= 0.22f)
+        else if (distanceFromTargetCenter <= 0.22f)
             coinsMultiplyer = 1.5f;
-        else if (distanceFromCenter <= 0.37f)
+        else if (distanceFromTargetCenter <= 0.37f)
             coinsMultiplyer = 1.25f;
         else
             coinsMultiplyer = 1f;
+    }
+
+    private void GameStarted()
+    {
+        target.Create();
+
+        Spawn();
+        leftKnivesCount = knivesNumberImprover.CurrentValue - 1;
     }
 }

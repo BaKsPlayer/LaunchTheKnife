@@ -7,15 +7,15 @@ public class FlyingState : State
 {
     [SerializeField] private State rewardingState;
 
+    [SerializeField] private Vector2 border; 
+
     private RaycastHit2D hit;
 
     private bool isHitBackSide;
-    private bool knifeInTarget;
 
     public override void Init()
     {
         base.Init();
-        knifeInTarget = false;
 
         hit = _gameKnife.Hit;
 
@@ -25,26 +25,26 @@ public class FlyingState : State
 
     public override void Update()
     {
+        _gameKnife.Fly();
+
+        if (IsKnifeAbroad())
+            _gameKnife.LoseKnife();
+
+        if (!hit)
+            return;
+
         if (Vector2.Distance(_gameKnife.m_Transform.position, hit.transform.position) < 0.3f)
         {
             if (isHitBackSide)
-            {
                 _gameKnife.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            }
             else
-            {
-                if (!knifeInTarget)
-                {
-                    Debug.Log("KnifeIntTarget");
-                    _gameKnife.SetState(rewardingState);
-
-                    knifeInTarget = true;
-                }
-            }
-
-            return;
+                _gameKnife.SetState(rewardingState);
         }
+      
+    }
 
-        _gameKnife.Fly();
+    private bool IsKnifeAbroad()
+    {
+        return Mathf.Abs(_gameKnife.Position.x) > border.x || Mathf.Abs(_gameKnife.Position.y) > border.y;
     }
 }

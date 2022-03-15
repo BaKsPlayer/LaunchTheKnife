@@ -7,14 +7,14 @@ public class RewardingState : State
     [SerializeField] private State movingState;
 
     private float timer;
-    private bool isKnifeCtreated;
+    private bool isTargetCreated;
 
     public override void Init()
     {
         base.Init();
 
         timer = 0;
-        isKnifeCtreated = false;
+        isTargetCreated = false;
 
         _gameKnife.HitTarget();
     }
@@ -23,16 +23,14 @@ public class RewardingState : State
     {
         timer += Time.deltaTime;
 
-        if (timer >= 0.5f && !isKnifeCtreated)
+        if (timer >= 0.5f && !isTargetCreated)
         {
             _gameKnife.Target.Create();
-            isKnifeCtreated = true;
+            isTargetCreated = true;
         }
 
         if (timer >= 1f)
         {
-            _gameKnife.RewardText.transform.parent.gameObject.SetActive(false);
-
             _gameKnife.CalculateCoinsMultiplyer();
             int coinsAmount = Mathf.RoundToInt(_gameKnife.CoinsPerHit * _gameKnife.CoinsMultiplyer);
             GameStats.Instance.AddCoins(coinsAmount);

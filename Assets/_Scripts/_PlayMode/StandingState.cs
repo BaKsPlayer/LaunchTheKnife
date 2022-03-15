@@ -16,6 +16,8 @@ public class StandingState : State
 
     public override void Update()
     {
+        _gameKnife.Rotate();
+
         leftDegreesToChangeState -= Mathf.Abs(_gameKnife.RotateSpeed) * Time.deltaTime;
 
         if (leftDegreesToChangeState <= 0)

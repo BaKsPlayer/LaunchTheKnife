@@ -10,7 +10,7 @@ public class Target : MonoBehaviour
 
     public float range, moveSpeed, delay, startPos;
 
-    float timer = 0, distance;
+    float distance;
 
     public int dir;
 
@@ -24,6 +24,8 @@ public class Target : MonoBehaviour
     private Vector2 originalScale;
 
     private Transform _parentTransform;
+
+    private bool isMoveMemory;
 
     private void Start()
     {
@@ -72,10 +74,11 @@ public class Target : MonoBehaviour
 
         transform.localScale = new Vector2(originalScale.x * offset, originalScale.y * offset);
 
-        isMove = false;
-
         if (GameStats.Instance.Score <= 6)
+        {
+            isMove = false;
             return;
+        }
 
         if (UnityEngine.Random.Range(0,2) == 0)
         {
@@ -95,13 +98,16 @@ public class Target : MonoBehaviour
 
     public void Hit()
     {
-        OnHit?.Invoke();
+        m_Animator.SetTrigger("Hit");
+        m_Animator.SetTrigger("Change");
 
+        OnHit?.Invoke();
     }
 
     public void Stop()
     {
-        throw new NotImplementedException();
+        isMoveMemory = isMove;
+        isMove = false;
     }
 
 }

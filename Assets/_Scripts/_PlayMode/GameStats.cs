@@ -1,11 +1,10 @@
-using System;
-
 public class GameStats
 {
     public int CoinsForSession { get; private set; }
 
     public int Score { get; private set; }
     public int BestScore { get; private set; }
+
 
     private static GameStats instance;
     public static GameStats Instance
@@ -35,4 +34,5 @@ public class GameStats
     {
         BestScore = value;
     }
+
 }

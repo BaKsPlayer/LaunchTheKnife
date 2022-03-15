@@ -55,7 +55,26 @@ public class LoseMenuManager : MonoBehaviour
         
     }
 
+    public void Activate()
+    {
+        Set();
+        Open();
+    }
 
+    private void Set()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void Open()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Close()
+    {
+        throw new System.NotImplementedException();
+    }
 
     public void RewardLoseMenu()
     {

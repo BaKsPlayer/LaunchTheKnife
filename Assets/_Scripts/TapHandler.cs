@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LaunchKnife : MonoBehaviour, IPointerDownHandler
+public class TapHandler : MonoBehaviour, IPointerDownHandler
 {
-    public PlayerController playerController;
+    public GameKnife gameKnife;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        playerController.LaunchKnife();
+        gameKnife.Launch();
     }
-
-
-
 }

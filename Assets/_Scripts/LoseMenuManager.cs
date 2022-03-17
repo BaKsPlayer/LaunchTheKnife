@@ -5,89 +5,122 @@ using UnityEngine.UI;
 
 public class LoseMenuManager : MonoBehaviour
 {
-    public GameManager gameManager;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text bestScoreText;
 
-    public Text scoreText, bestScoreText, coinsText, sessionCoinsText, adButtonText;
+    [SerializeField] private Text sessionCoinsText;
 
-    public GameObject rewardText;
+    [Space(height: 10f)]
+    [SerializeField] private Text advertButtonText;
+    [SerializeField] private Button advertButton;
 
-    public SafeInt adRewardSum;
+    [Space(height: 10f)]
+    [SerializeField] private Animation advertTextAnimation;
+    [SerializeField] private Text advertText;
 
-    public Sprite inactive_AdButton, active_AdButton;
+    [Space(height: 10f)]
+    [SerializeField] private Text rewardText;
+    [SerializeField] private Animation rewardTextAnimation;
 
-    private void Awake()
+    [Space(height: 10f)]
+    [SerializeField] private GameKnife gameKnife;
+
+    [Header("AdvertButton Sprites")]
+    [SerializeField] private Sprite activeAdvertButtonSprite;
+    [SerializeField] private Sprite inactiveAdvertButtonSprite;
+    
+
+    private SafeInt advertRewardSum;
+
+    private void Start()
     {
-        adButtonText.transform.parent.parent.parent.GetComponent<Button>().onClick.AddListener(delegate { gameManager.GetComponent<AdvertManager>().ShowAd(AdvertManager.AdType.AdditionalReward); });
+        advertButton.onClick.AddListener(delegate { AdvertManager.Instance.ShowAd(AdType.LoseMenuReward); });
+        //TODO: Подписать на событие Wallet.Instance.OnValueChanged coinsText
     }
 
-    public void SetLoseMenu()
+    public void CallRewardTextAnimation()
     {
-        scoreText.text = gameManager.score.ToString();
-        bestScoreText.text = PlayerPrefsSafe.GetInt("BestScore").ToString();
+        rewardText.text = $"+{GameStats.Instance.CoinsForSession} ";
 
-        sessionCoinsText.text = gameManager.coinsForSession.ToString();
-
-        if (gameManager.coinsForSession > 0)
-        {
-            rewardText.transform.GetChild(0).GetComponent<Text>().text = "+" + gameManager.coinsForSession.ToString() + " ";
-
-            Invoke("CallMoneyAnim", 0.35f);
-            StartCoroutine(coinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + gameManager.coinsForSession, 1.35f));
-        }
-
-        adRewardSum = (int)Mathf.Clamp(gameManager.coinsForSession / 2, PlayerPrefsSafe.GetInt("MoneyForTarget"), Mathf.Infinity);
-
-        adButtonText.text = "+" + adRewardSum.ToString();
-
-        adButtonText.transform.parent.parent.parent.GetComponent<Button>().interactable = true;
-        adButtonText.transform.parent.parent.GetComponent<Image>().sprite = active_AdButton;
-
-        coinsText.text = GameManager.coins.ToString();
-        GameManager.coins += gameManager.coinsForSession;
-
+        rewardTextAnimation.gameObject.SetActive(true);
+        rewardTextAnimation.Play();
     }
 
-    public void CallMoneyAnim()
+    public void Open()
     {
-        rewardText.SetActive(true);
-        rewardText.GetComponent<Animation>().Play();
 
-        
-    }
 
-    public void Activate()
-    {
         Set();
-        Open();
+        Activate();
     }
 
     private void Set()
     {
-        throw new System.NotImplementedException();
+        scoreText.text = GameStats.Instance.Score.ToString();
+        bestScoreText.text = GameStats.Instance.BestScore.ToString();
+
+        sessionCoinsText.text = GameStats.Instance.CoinsForSession.ToString();
+
+        if (GameStats.Instance.CoinsForSession > 0)
+            CallRewardTextAnimation();
+
+        advertRewardSum = (int)Mathf.Clamp(GameStats.Instance.CoinsForSession / 2f, gameKnife.CoinsPerHit, Mathf.Infinity);
+        advertButtonText.text = $"+{advertRewardSum}";
+
+        SetActiveAdvertButton(true);
+
+        Wallet.Instance.AddCoins(GameStats.Instance.CoinsForSession);
+
     }
 
-    private void Open()
+    private void Activate()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(true);
+        GetComponent<Animator>().SetTrigger("Open");
     }
 
     public void Close()
     {
-        throw new System.NotImplementedException();
+        
+
+        GetComponent<Animator>().SetTrigger("Close");
+        StartCoroutine(Deactivate(0.4f));
+    }
+
+    private IEnumerator Deactivate(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        advertTextAnimation.gameObject.SetActive(false);
+        rewardTextAnimation.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void RewardLoseMenu()
     {
-        rewardText.transform.GetChild(0).GetComponent<Text>().text = "+" + adRewardSum + " ";
-        CallMoneyAnim();
-        StartCoroutine(coinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + adRewardSum, 1f));
+        CallAdvertTextAnimation();
 
-        GameManager.coins += adRewardSum;
-        adButtonText.transform.parent.parent.parent.GetComponent<Button>().interactable = false;
-        adButtonText.transform.parent.parent.GetComponent<Image>().sprite = inactive_AdButton;
-        //adButtonText.transform.parent.parent.GetComponent<Animator>().SetTrigger("Disabled");
+        Wallet.Instance.AddCoins(advertRewardSum);
+        SetActiveAdvertButton(false);
 
-        StartCoroutine(sessionCoinsText.GetComponent<CoinsFiller>().FillCoins(gameManager.coinsForSession, gameManager.coinsForSession + adRewardSum));
+        //TODO: Сделать вызов заполнения coinsForSessionText
+        //StartCoroutine(sessionCoinsText.GetComponent<CoinsFiller>().FillCoins(gameManager.coinsForSession, gameManager.coinsForSession + adRewardSum));
+    }
+
+    public void CallAdvertTextAnimation()
+    {
+        advertText.text = $"+{advertRewardSum} ";
+
+        advertTextAnimation.gameObject.SetActive(true);
+        advertTextAnimation.Play();
 
     }
+
+    public void SetActiveAdvertButton(bool value)
+    {
+        advertButton.interactable = value;
+
+        Sprite buttonSprite = value ? activeAdvertButtonSprite : inactiveAdvertButtonSprite;
+        advertButton.transform.GetChild(0).GetComponent<Image>().sprite = buttonSprite;
+    } 
 }

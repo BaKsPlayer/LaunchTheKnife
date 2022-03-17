@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class GameKnife : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Target target;
     public Target Target => target;
 
@@ -11,29 +12,34 @@ public class GameKnife : MonoBehaviour
 
     [SerializeField] private KnifeImprover knivesNumberImprover;
 
+    [SerializeField] private GameController gameController;
+
     [SerializeField] private LoseMenuManager loseMenu;
     [SerializeField] private TapHandler tapHandler;
 
+    [Header("States")]
     [SerializeField] private State movingState;
-    [SerializeField] private State standingState;
     [SerializeField] private State flyingState;
 
+    [Header("Speeds")]
     [SerializeField] private float flightSpeed;
     [SerializeField] private float moveSpeed;
 
-    [SerializeField] private float rotateSpeed;
-    public float RotateSpeed => rotateSpeed;
-
+    [Space(height: 15f)]
     [SerializeField] private AnimationCurve difficult;
-
-    [SerializeField] private Transform[] spawns;
-
     [SerializeField] private LayerMask toHit;
+
+    [Space(height: 15f)]
+    [SerializeField] private Transform[] spawns;
 
     public Vector2 CenterPosition => new Vector2(0, 1.57f);
     public Transform m_Transform{ get; private set; }
 
+    [SerializeField]
     private State CurrentState;
+
+    private float rotateSpeed;
+    public float RotateSpeed => rotateSpeed;
 
     private float coinsMultiplyer;
     public float CoinsMultiplyer => coinsMultiplyer;
@@ -47,6 +53,7 @@ public class GameKnife : MonoBehaviour
     public RaycastHit2D Hit => hit;
 
     public Vector2 Position => m_Transform.position;
+    public Vector2 FlightDirection => m_Transform.GetChild(0).position - m_Transform.position;
 
     public Transform finalPoint
     {
@@ -57,29 +64,45 @@ public class GameKnife : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         m_Transform = GetComponent<Transform>();
+
+        gameController.OnGameStarted += GameStarted;
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        gameController.OnGameStarted -= GameStarted;
     }
 
     private void Update()
     {
-        CurrentState.Update();
+        CurrentState?.Update();
     }
 
     public void SetState(State state)
     {
+        if (state == null)
+        {
+            CurrentState = null;
+            return;
+        }
+
         CurrentState = Instantiate(state);
-        CurrentState.Init();
         CurrentState.SetGameKnife(this);
+        CurrentState.Init();
     }
 
     public void Launch()
     {
-        SetState(flyingState);
-        hit = Physics2D.Raycast(m_Transform.position, m_Transform.GetChild(0).position - m_Transform.position, 100, toHit);
         target.Stop();
+        hit = Physics2D.Raycast(m_Transform.position, FlightDirection, 100, toHit);
+        SetState(flyingState);
 
+        CalculateCoinsMultiplyer();
+        
         tapHandler.enabled = false;
     }
 
@@ -106,6 +129,9 @@ public class GameKnife : MonoBehaviour
     public void HitTarget()
     {
         VibrationManager.Instance.Vibrate(VibrationType.Heavy);
+
+        transform.SetParent(target.transform, true);
+
         currentFlightSpeed = 0;
         target.Hit();
     }
@@ -115,13 +141,24 @@ public class GameKnife : MonoBehaviour
         leftKnivesCount--;
 
         if (leftKnivesCount >= 0)
+        {
             Spawn();
+            SetState(movingState);
+
+            target.RestoreMovement();
+        }
         else
-            loseMenu.Activate();
+        {
+            loseMenu.Open();
+            SetState(null);
+        }
     }
 
     public void Spawn()
     {
+        transform.SetParent(null, true);
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         spawnIndex = Random.Range(0, 2);
         m_Transform.position = spawns[spawnIndex].position;
 
@@ -131,6 +168,9 @@ public class GameKnife : MonoBehaviour
 
         if (Random.Range(0, 2) == 0)
             rotateSpeed = -rotateSpeed;
+
+        gameObject.SetActive(true);
+        tapHandler.enabled = true;
     }
 
 
@@ -150,9 +190,8 @@ public class GameKnife : MonoBehaviour
 
     private void GameStarted()
     {
-        target.Create();
-
         Spawn();
+        SetState(movingState);
         leftKnivesCount = knivesNumberImprover.CurrentValue - 1;
     }
 }

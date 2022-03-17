@@ -5,33 +5,31 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-
-    public bool isMove, isWaiting;
-
-    public float range, moveSpeed, delay, startPos;
-
-    float distance;
-
-    public int dir;
-
-    public Animator m_Animator => GetComponent<Animator>();
-
-    public event Action OnHit;
-
     [Range(0,100)]
     [SerializeField] private float scaleOffset;
+
+    public event Action OnHit;
 
     private Vector2 originalScale;
 
     private Transform _parentTransform;
 
+    private Animator m_Animator;
+
+    private bool isMove;
     private bool isMoveMemory;
 
-    private void Start()
+    private float moveSpeed;
+    private float distance;
+    private float range;
+    private int dir;
+
+    private void Awake()
     {
         originalScale = transform.localScale;
-
         _parentTransform = transform.parent;
+
+        m_Animator = _parentTransform.GetComponent<Animator>();
     }
 
     private void Update()
@@ -83,18 +81,13 @@ public class Target : MonoBehaviour
         if (UnityEngine.Random.Range(0,2) == 0)
         {
             isMove = true;
-
-            isWaiting = true;
-
             range = UnityEngine.Random.Range(40f, 60f);
-            delay = 0;
             moveSpeed = 25;
 
             dir = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
 
         }
     }
-
 
     public void Hit()
     {
@@ -110,4 +103,8 @@ public class Target : MonoBehaviour
         isMove = false;
     }
 
+    public void RestoreMovement()
+    {
+        isMove = isMoveMemory;
+    }
 }

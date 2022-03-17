@@ -10,6 +10,8 @@ public class GameInitializer : MonoBehaviour
 
     private void Start()
     {
+        AdvertManager.Instance.Initialize();
+
         if (PlayerPrefsSafe.GetInt("IsGameLaunchedYet") != 1)
             InitOnFirstLaunch();
 

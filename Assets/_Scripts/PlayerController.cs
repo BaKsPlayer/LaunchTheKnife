@@ -148,10 +148,10 @@ public class PlayerController : MonoBehaviour
                             if (nowKnife != null)
                                 Destroy(nowKnife);
 
-                            if (nowKnivesNumber == 0)
-                                gameManager.OpenLoseMenu();
-                            else
-                                CreateKnife();
+                            //if (nowKnivesNumber == 0)
+                            //    gameManager.OpenLoseMenu();
+                            //else
+                            //    CreateKnife();
                         }
 
 
@@ -197,10 +197,10 @@ public class PlayerController : MonoBehaviour
                     if (nowKnife != null)
                         Destroy(nowKnife);
 
-                    if (nowKnivesNumber == 0)
-                        gameManager.OpenLoseMenu();
-                    else
-                        CreateKnife();
+                    //if (nowKnivesNumber == 0)
+                    //    gameManager.OpenLoseMenu();
+                    //else
+                    //    CreateKnife();
                 }
         }
     }
@@ -218,9 +218,6 @@ public class PlayerController : MonoBehaviour
 
             hit = Physics2D.Raycast(nowKnife.transform.position, nowKnife.transform.GetChild(0).position - nowKnife.transform.position, 100, toHit);
 
-            isTargetMoveMemory = target.GetComponent<Target>().isMove;
-
-            target.GetComponent<Target>().isMove = false;
 
             //print(hit.transform);
 
@@ -333,61 +330,6 @@ public class PlayerController : MonoBehaviour
         //RandomTarget();
     }
 
-    public void RandomTargetWithDelay()
-    {
-        RandomTarget();
-
-        Destroy(nowKnife);
-    }
-
-    public void RandomTarget()
-    {
-        float rotZ = Random.Range(-180f, 180f);
-
-        if (PlayerPrefs.GetString("IsStudyComplete") != "YES")
-            rotZ = Random.Range(-164f, -16f);
-
-        target.transform.parent.rotation = Quaternion.Euler(0, 0, rotZ);
-
-        if (Mathf.Abs(rotZ) > 90f)
-            rotZ = 90 - (Mathf.Abs(rotZ) - 90);
-
-        //float f = Mathf.Clamp(Mathf.Abs(rotZ), 0, 90) / 90;
-
-        //target.transform.localPosition = Vector3.Lerp(new Vector3(1.77f, 0, 0), new Vector3(1.92f, 0, 0), f);
-
-        //target.transform.localPosition = new Vector2(1.77f, 0);
-
-        //target.transform.position = new Vector3(Mathf.Clamp(target.transform.position.x, -horizontalBorder, horizontalBorder), target.transform.position.y, target.transform.position.z);
-
-        float randomOffset = Random.Range(-targetScaleOffset, targetScaleOffset);
-
-        target.transform.localScale = new Vector2(targetOriginalScale.x * (1 - randomOffset / 100), targetOriginalScale.y * (1 - randomOffset / 100));
-
-        if (gameManager.score >= 6)
-            if (Random.Range(0, 2) == 1)
-            {
-                target.GetComponent<Target>().isMove = true;
-
-                target.GetComponent<Target>().isWaiting = true;
-
-                target.GetComponent<Target>().range = Random.Range(40f, 60f);
-                target.GetComponent<Target>().delay = 0;
-                target.GetComponent<Target>().moveSpeed = 25;
-
-                if (Random.Range(0, 2) == 0)
-                    target.GetComponent<Target>().dir = 1;
-                else
-                    target.GetComponent<Target>().dir = -1;
-            }
-            else
-                target.GetComponent<Target>().isMove = false;
-        else
-            target.GetComponent<Target>().isMove = false;
-
-        target.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 1;
-
-    }
 
 
     public void CreateKnife()
@@ -442,8 +384,6 @@ public class PlayerController : MonoBehaviour
             gameManager.knivesText.text = "x"+nowKnivesNumber.ToString();
 
             isTimeToNewKnife = false;
-
-            target.GetComponent<Target>().isMove = isTargetMoveMemory;
         }
 
 

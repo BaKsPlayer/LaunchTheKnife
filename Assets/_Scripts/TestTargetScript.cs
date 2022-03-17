@@ -36,7 +36,7 @@ public class TestTargetScript : MonoBehaviour
                 return;
 
                 if (hit.collider.tag == "Target")
-                    print("(" + hit.point.x + ", " + hit.point.y + "), Distance - " + Vector2.Distance(new Vector2(hit.point.x, hit.point.y), target.transform.position));
+                    print("(" + hit.point.x + ", " + hit.point.y + "), Distance - " + Vector2.Distance(hit.point, hit.transform.position));
                 else if (hit.collider.tag == "TargetBack")
                     print("Ты не туда попал! Не лезьте блять в хипхоп!");
 

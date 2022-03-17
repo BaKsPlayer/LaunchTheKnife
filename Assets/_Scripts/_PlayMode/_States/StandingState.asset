@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42aa5181fa69b4c7ea517e59934939d2, type: 3}
   m_Name: StandingState
   m_EditorClassIdentifier: 
+  movingState: {fileID: 11400000, guid: 40b8f3634810e4d80997e314a2488ce3, type: 2}

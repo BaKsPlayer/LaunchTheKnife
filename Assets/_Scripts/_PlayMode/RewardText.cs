@@ -13,18 +13,19 @@ public class RewardText : MonoBehaviour
     private void Awake()
     {
         m_Animation = GetComponent<Animation>();
-
         target.OnHit += Show;
+
+        gameObject.SetActive(false);
     }
 
     private void Show()
     {
-        m_Text.text = $"+{gameKnife.CoinsPerHit * gameKnife.CoinsMultiplyer} ";
+        m_Text.text = $"+{(int)(gameKnife.CoinsPerHit * gameKnife.CoinsMultiplyer)} ";
 
         gameObject.SetActive(true);
         m_Animation.Play();
 
-        
+        StartCoroutine(Deactivate());
     }
 
     private IEnumerator Deactivate()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FlyingState", menuName = "GameKnifeStates/FlyingState", order = 2)]
@@ -17,10 +15,12 @@ public class FlyingState : State
     {
         base.Init();
 
+        _gameKnife.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
         hit = _gameKnife.Hit;
 
-        if (hit && hit.collider.CompareTag("TargetBack"))
-            isHitBackSide = false;
+        if (hit)
+            isHitBackSide = hit.collider.CompareTag("TargetBack");
     }
 
     public override void Update()
@@ -33,10 +33,13 @@ public class FlyingState : State
         if (!hit)
             return;
 
-        if (Vector2.Distance(_gameKnife.m_Transform.position, hit.transform.position) < 0.3f)
+        if (Vector2.Distance(_gameKnife.m_Transform.position, hit.point) < 0.3f)
         {
             if (isHitBackSide)
+            {
                 _gameKnife.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                _gameKnife.SetState(null);
+            }
             else
                 _gameKnife.SetState(rewardingState);
         }

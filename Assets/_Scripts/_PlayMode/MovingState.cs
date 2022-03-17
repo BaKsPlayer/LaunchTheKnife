@@ -12,6 +12,8 @@ public class MovingState : State
     {
         base.Init();
 
+        _gameKnife.GetComponent<SpriteRenderer>().sortingOrder = 5;
+
         isMovingToFinalPoint = _gameKnife.Position == _gameKnife.CenterPosition;
 
         if (isMovingToFinalPoint)

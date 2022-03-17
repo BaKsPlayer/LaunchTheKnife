@@ -1,54 +1,63 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Advertisements;
+
+public enum AdType { LoseMenuReward, KnifeShopReward };
 
 public class AdvertManager : MonoBehaviour
 {
-    public GameObject loseMenu, knifeShop, shopButton;
+    [SerializeField] private LoseMenuManager loseMenu;
+    [SerializeField] private KnifeShop knifeShop;
 
-    public enum AdType { AdditionalReward, CoinsReward };
+    private AdType nowAdType;
 
-    AdType nowAdType;
+    private bool isShown = false;
 
-    bool isShown = false;
+    private string advertID;
+    private string gameID;
+
+    public static AdvertManager Instance { get; private set; }
 
     private void Awake()
+    {
+        if (Instance != null)
+        {
+            if (Instance != this)
+                Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
+    public void Initialize()
     {
         if (Advertisement.isSupported)
         {
 #if UNITY_IOS
-            Advertisement.Initialize("4389440", false); 
+            gameID = "4389440";
+            advertID = "Rewarded_iOS";
 #else
-            Advertisement.Initialize("4389441", false);
+            gameID = "4389441";
+            advertID = "Rewarded_Android";
 #endif
-        }
 
-        shopButton.GetComponent<Button>().onClick.AddListener(delegate { ShowAd(AdType.CoinsReward); });
+            Advertisement.Initialize(gameID, false);
+        }
     }
 
     public void ShowAd(AdType adType)
     {
-#if UNITY_IOS
-        if (Advertisement.IsReady("Rewarded_iOS") && !isShown)
+        if (Advertisement.IsReady(advertID) && !isShown)
         {
             var options = new ShowOptions { resultCallback = HandleShowResult };
-            Advertisement.Show("Rewarded_iOS", options);
+            Advertisement.Show(advertID, options);
 
             isShown = true;
         }
 
         nowAdType = adType;
-#else
-        if (Advertisement.IsReady("Rewarded_Android") && !isShown)
-        {
-            var options = new ShowOptions { resultCallback = HandleShowResult };
-            Advertisement.Show("Rewarded_Android", options);
-
-            isShown = true;
-        }
-
-        nowAdType = adType;
-#endif
     }
 
     private void HandleShowResult(ShowResult result)
@@ -57,9 +66,9 @@ public class AdvertManager : MonoBehaviour
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown. " + nowAdType);
-                if (nowAdType == AdType.AdditionalReward)
+                if (nowAdType == AdType.LoseMenuReward)
                     RewardLoseMenu();
-                else if (nowAdType == AdType.CoinsReward)
+                else if (nowAdType == AdType.KnifeShopReward)
                     Reward50Coins();
 
                 break;

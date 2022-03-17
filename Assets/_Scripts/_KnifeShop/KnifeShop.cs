@@ -29,7 +29,7 @@ public class KnifeShop : MonoBehaviour
     [SerializeField] private Text coinsText;
     public Text CoinsText => coinsText;
 
-    public GameManager gameManager;
+    [SerializeField] private Button advertButton;
 
     [SerializeField] private KnifeButton[] allKnives;
     private List<KnifeButton> nonPurchasedKnives = new List<KnifeButton>();
@@ -92,18 +92,19 @@ public class KnifeShop : MonoBehaviour
         if (nonPurchasedKnives.ToArray().Length == 0)
             buyRandomKnifeButton.interactable = false;
 
+        advertButton.onClick.AddListener(delegate { AdvertManager.Instance.ShowAd(AdType.KnifeShopReward); });
+
         CloseKnifeShop();
     }
 
 
     public void BuyActiveButtonKnife(bool isFree = false)
     {
-        if (_activeButton.Price <= GameManager.coins || isFree)
+        if (_activeButton.Price <= Wallet.Instance.Coins || isFree)
         {
             if (!isFree)
             {
-                GameManager.coins -= _activeButton.Price;
-                CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+                Wallet.Instance.SpendCoins(_randomKnifePrice);
             }
 
             PlayerPrefsSafe.SetInt("KnifeLvl_" + _activeButton.Id, 1);
@@ -122,10 +123,9 @@ public class KnifeShop : MonoBehaviour
 
     public void BuyRandomKnife()
     {
-        if (GameManager.coins >= _randomKnifePrice)
+        if (Wallet.Instance.Coins >= _randomKnifePrice)
         {
-            GameManager.coins -= _randomKnifePrice;
-            CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+            Wallet.Instance.SpendCoins(_randomKnifePrice);
 
             if (nonPurchasedKnives.ToArray().Length >= 2)
                 StartCoroutine(RandomKnife());
@@ -181,24 +181,17 @@ public class KnifeShop : MonoBehaviour
     public void ResetKnifeShop()
     {
         PlayerPrefsSafe.SetInt("Vibration", 0);
-
         _activeKnife.Select();
-
         PlayerPrefsSafe.SetInt("Vibration", 1);
     }
 
     public void Reward50Coins()
     {
-        StartCoroutine(CoinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + 50));
-
-        GameManager.coins += 50;
-
-        gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+        Wallet.Instance.AddCoins(50);
     }
 
     public void OpenKnifeShop()
     {
-        CoinsText.text = GameManager.coins.ToString();
         ResetKnifeShop();
 
         gameObject.SetActive(true);

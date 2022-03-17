@@ -68,67 +68,6 @@ public class GameManager : MonoBehaviour
         coinsText.text = Wallet.Instance.Coins.ToString();
     }
 
-
-    public void OpenLoseMenu()
-    {
-        GetComponent<PlayerController>().isGameMode = false;
-
-
-        loseMenu.SetActive(true);
-        loseMenu.GetComponent<LoseMenuManager>().SetLoseMenu();
-
-    }
-
-    public void StartGame()
-    {
-        coinsForSession = 0;
-        sessionCoinsText.text = coinsForSession.ToString();
-
-        //mainScene.SetActive(false);
-        mainScene.GetComponent<Animator>().SetTrigger("StartGame");
-        Invoke("CloseMainSceneWithDelay", 0.7f);
-
-        inGame.SetActive(true);
-        startText.SetActive(true);
-        startGameOverlay.SetActive(true);
-
-        GetComponent<PlayerController>().nowKnivesNumber = PlayerPrefsSafe.GetInt("KnivesNumber");
-
-        GetComponent<MainSceneKnifeSpawner>().enabled = false;
-
-        Invoke("StartGameWithDelay", 1.85f);
-    }
-
-    public void CloseMainSceneWithDelay()
-    {
-        mainScene.SetActive(false);
-
-        GetComponent<PlayerController>().target.SetActive(true);
-        GetComponent<PlayerController>().RandomTarget();
-    }
-
-    public void StartGameWithDelay()
-    {
-        startText.SetActive(false);
-
-        startGameOverlay.SetActive(false);
-
-        GetComponent<PlayerController>().isGameMode = true;
-
-
-        GetComponent<PlayerController>().CreateKnife();
-    }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public void ContinueGame()
-    {
-        Time.timeScale = 1;
-    }
-
     public void RestartGame()
     {
         coinsForSession = 0;
@@ -153,11 +92,6 @@ public class GameManager : MonoBehaviour
         if (GetComponent<StudyManager>())
             GetComponent<StudyManager>().disabling = false;
 
-    }
-
-    public void RandomTargetWithDelay()
-    {
-        GetComponent<PlayerController>().RandomTarget();
     }
 
     public void GoHome()
@@ -195,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         loseMenu.SetActive(false);
 
-        loseMenu.GetComponent<LoseMenuManager>().rewardText.SetActive(false);
+        //loseMenu.GetComponent<LoseMenuManager>().rewardText.SetActive(false);
 
         //if (isRestart)
         //{

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "RewardingState", menuName = "GameKnifeStates/RewardingState", order = 3)]
 public class RewardingState : State
 {
     [SerializeField] private State movingState;
@@ -26,6 +25,7 @@ public class RewardingState : State
         if (timer >= 0.5f && !isTargetCreated)
         {
             _gameKnife.Target.Create();
+            _gameKnife.Spawn();
             isTargetCreated = true;
         }
 
@@ -37,7 +37,7 @@ public class RewardingState : State
 
             GameStats.Instance.IncreaseScore();
 
-            _gameKnife.SetState(movingState);
+            _gameKnife.SetState(movingState); 
         }
     }
 }

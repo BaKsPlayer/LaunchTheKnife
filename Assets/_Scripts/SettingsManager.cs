@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    public Image soundToggle, musicToggle, vibrationToggle, leftHandToggle;
+    [SerializeField] private Image soundToggle;
+    [SerializeField] private Image musicToggle;
+    [SerializeField] private Image vibrationToggle;
+    [SerializeField] private Image leftHandToggle;
 
-    public Sprite toggleOn, toggleOff;
+    [SerializeField] private Sprite toggleOn;
+    [SerializeField] private Sprite toggleOff;
 
-    public GameObject scorePanel;
-
-    public VibrationManager vibrator;
+    [SerializeField] private GameObject scorePanel;
 
     Animator _animator;
 
@@ -94,7 +96,7 @@ public class SettingsManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("Sound", 0);
         }
 
-        vibrator.Vibrate(VibrationType.Light);
+        VibrationManager.Instance.Vibrate(VibrationType.Light);
     }
 
     public void ToggleMusic()
@@ -112,7 +114,7 @@ public class SettingsManager : MonoBehaviour
             PlayerPrefsSafe.SetInt("Music", 0);
         }
 
-        vibrator.Vibrate(VibrationType.Light);
+        VibrationManager.Instance.Vibrate(VibrationType.Light);
     }
 
     public void ToggleVibration()
@@ -122,7 +124,7 @@ public class SettingsManager : MonoBehaviour
             vibrationToggle.sprite = toggleOn;
             PlayerPrefsSafe.SetInt("Vibration", 1);
 
-            vibrator.Vibrate(VibrationType.Light);
+            VibrationManager.Instance.Vibrate(VibrationType.Light);
 
             //audioManager.PlaySound("PressButton");
         }
@@ -152,7 +154,7 @@ public class SettingsManager : MonoBehaviour
             scorePanel.GetComponent<RectTransform>().localPosition = new Vector2(-324, scorePanel.GetComponent<RectTransform>().localPosition.y);
         }
 
-        vibrator.Vibrate(VibrationType.Light);
+        VibrationManager.Instance.Vibrate(VibrationType.Light);
     }
 
 

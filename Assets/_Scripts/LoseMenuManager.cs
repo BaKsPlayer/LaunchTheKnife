@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class LoseMenuManager : MonoBehaviour
 {
+    [SerializeField] private Text totalCoinsText;
+
+    [Space(height: 10f)]
     [SerializeField] private Text scoreText;
     [SerializeField] private Text bestScoreText;
-
     [SerializeField] private Text sessionCoinsText;
 
     [Space(height: 10f)]
@@ -35,35 +37,25 @@ public class LoseMenuManager : MonoBehaviour
     private void Start()
     {
         advertButton.onClick.AddListener(delegate { AdvertManager.Instance.ShowAd(AdType.LoseMenuReward); });
-        //TODO: Подписать на событие Wallet.Instance.OnValueChanged coinsText
-    }
-
-    public void CallRewardTextAnimation()
-    {
-        rewardText.text = $"+{GameStats.Instance.CoinsForSession} ";
-
-        rewardTextAnimation.gameObject.SetActive(true);
-        rewardTextAnimation.Play();
     }
 
     public void Open()
     {
-
-
-        Set();
         Activate();
+        Set();
     }
 
     private void Set()
     {
+        totalCoinsText.text = Wallet.Instance.Coins.ToString();
+
         scoreText.text = GameStats.Instance.Score.ToString();
         bestScoreText.text = GameStats.Instance.BestScore.ToString();
-
         sessionCoinsText.text = GameStats.Instance.CoinsForSession.ToString();
 
         if (GameStats.Instance.CoinsForSession > 0)
-            CallRewardTextAnimation();
-
+            StartCoroutine(CallRewardTextAnimation(GameStats.Instance.CoinsForSession, 0.6f));
+        
         advertRewardSum = (int)Mathf.Clamp(GameStats.Instance.CoinsForSession / 2f, gameKnife.CoinsPerHit, Mathf.Infinity);
         advertButtonText.text = $"+{advertRewardSum}";
 
@@ -81,8 +73,6 @@ public class LoseMenuManager : MonoBehaviour
 
     public void Close()
     {
-        
-
         GetComponent<Animator>().SetTrigger("Close");
         StartCoroutine(Deactivate(0.4f));
     }
@@ -96,24 +86,24 @@ public class LoseMenuManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private IEnumerator CallRewardTextAnimation(int coinsAmount, float delay = 0)
+    {
+        yield return new WaitForSeconds(delay);
+
+        rewardText.text = $"+{coinsAmount} ";
+
+        rewardTextAnimation.gameObject.SetActive(true);
+        rewardTextAnimation.Play();
+
+        totalCoinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins - coinsAmount, Wallet.Instance.Coins);
+    }
+
     public void RewardLoseMenu()
     {
-        CallAdvertTextAnimation();
+        StartCoroutine(CallRewardTextAnimation(advertRewardSum));
 
         Wallet.Instance.AddCoins(advertRewardSum);
         SetActiveAdvertButton(false);
-
-        //TODO: Сделать вызов заполнения coinsForSessionText
-        //StartCoroutine(sessionCoinsText.GetComponent<CoinsFiller>().FillCoins(gameManager.coinsForSession, gameManager.coinsForSession + adRewardSum));
-    }
-
-    public void CallAdvertTextAnimation()
-    {
-        advertText.text = $"+{advertRewardSum} ";
-
-        advertTextAnimation.gameObject.SetActive(true);
-        advertTextAnimation.Play();
-
     }
 
     public void SetActiveAdvertButton(bool value)

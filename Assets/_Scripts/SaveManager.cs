@@ -34,7 +34,6 @@ public class SaveManager
     public void LoadData()
     {
         Wallet.Instance.AddCoins(PlayerPrefsSafe.GetInt("Coins"));
-        GameStats.Instance.SetBestScore(PlayerPrefsSafe.GetInt("BestScore"));
 
         Debug.Log("Data Loaded");
      }

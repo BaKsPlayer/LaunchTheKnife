@@ -67,8 +67,12 @@ public class Gift : MonoBehaviour
 
     private void Update()
     {
+
         if (isGiftReady)
             return;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            ResetGift();
 
         if (timer > 0)
             timer -= Time.deltaTime;
@@ -86,11 +90,11 @@ public class Gift : MonoBehaviour
     {
         if (isGiftReady)
         {
-            StartCoroutine(coinsFiller.FillCoins(Wallet.Instance.Coins, Wallet.Instance.Coins + value, 1.5f));
-            Invoke("CloseGiftOverlayWithDelay", 1.5f);
+            coinsFiller.Fill(Wallet.Instance.Coins, Wallet.Instance.Coins + value);
+            Invoke("CloseGiftOverlayWithDelay", giftOverlay.GetComponent<Animation>().clip.length);
 
             giftText.text = $"+{value} ";
-            giftText.transform.parent.gameObject.SetActive(true);
+            giftOverlay.SetActive(true);
             giftOverlay.GetComponent<Animation>().Play();
 
             Wallet.Instance.AddCoins(value);
@@ -130,4 +134,8 @@ public class Gift : MonoBehaviour
         SaveManager.Instance.OnSaveData -= SaveData;
     }
 
+    private void ResetGift()
+    {
+        remainingTime = 1;
+    }
 }

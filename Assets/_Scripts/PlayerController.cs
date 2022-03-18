@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour
         float startValue = gameManager.coinsForSession;
         float endValue = gameManager.coinsForSession + (int)(PlayerPrefsSafe.GetInt("MoneyForTarget") * nowMultiplier);
 
-        StartCoroutine(gameManager.sessionCoinsText.GetComponent<CoinsFiller>().FillCoins(startValue, endValue));
+        //StartCoroutine(gameManager.sessionCoinsText.GetComponent<CoinsFiller>().FillCoins(startValue, endValue));
 
         rewardText.SetActive(false);
 

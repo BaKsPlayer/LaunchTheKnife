@@ -12,6 +12,7 @@ public class KnifeImprover : MonoBehaviour
     [SerializeField] private int StartPrice;
     private SafeInt startPrice;
 
+    [SerializeField] private CoinsFiller coinsTextFiller;
     [SerializeField] private Text priceText;
 
     [SerializeField] private Image buttonImage;
@@ -23,17 +24,14 @@ public class KnifeImprover : MonoBehaviour
     [SerializeField] private Color activeOutlineColor;
     [SerializeField] private Color inactiveOutlineColor;
 
+    public SafeInt CurrentValue { get; private set; }
+    public SafeInt Lvl { get; private set; }
+
     private SafeInt startValue;
     private SafeInt improvementValue;
 
-    private SafeInt currentValue;
-    public SafeInt CurrentValue => currentValue;
-
     private SafeInt price;
     private SafeFloat priceMultiplier;
-
-    private SafeInt lvl;
-    public SafeInt Lvl => lvl;
 
     private void Awake()
     {
@@ -68,14 +66,14 @@ public class KnifeImprover : MonoBehaviour
             startValue = 10;
         }
 
-        lvl = PlayerPrefsSafe.GetInt(ImprovementType + "LVL");
-        currentValue = startValue + lvl * improvementValue;
+        Lvl = PlayerPrefsSafe.GetInt(ImprovementType + "Lvl");
+        CurrentValue = startValue + Lvl * improvementValue;
 
         startPrice = StartPrice;
         price = GetPrice();
 
         priceText.text = price.ToString();
-        buttonText.text = $"x{currentValue}<size=42>+{improvementValue}</size>";
+        buttonText.text = $"x{CurrentValue}<size=42>+{improvementValue}</size>";
 
         SaveManager.Instance.OnSaveData += SaveData;
     }
@@ -85,13 +83,15 @@ public class KnifeImprover : MonoBehaviour
         if (Wallet.Instance.Coins < price)
             return;
 
-        lvl++;
-        currentValue += improvementValue;
+        Lvl++;
+        CurrentValue += improvementValue;
+
         Wallet.Instance.SpendCoins(price);
+        coinsTextFiller.Fill(Wallet.Instance.Coins + price, Wallet.Instance.Coins);
 
         price = GetPrice();
         priceText.text = price.ToString();
-        buttonText.text = $"x{currentValue}<size=42>+{improvementValue}</size>";
+        buttonText.text = $"x{CurrentValue}<size=42>+{improvementValue}</size>";
 
         VibrationManager.Instance.Vibrate(VibrationType.Success);
     }
@@ -104,8 +104,6 @@ public class KnifeImprover : MonoBehaviour
         {
             buttonImage.sprite = inactiveUpgradeSprite;
             buttonText.GetComponent<ImageSolidColorOutline>().OutlineColor = inactiveOutlineColor;
-
-            
         }
         else
         {
@@ -118,12 +116,12 @@ public class KnifeImprover : MonoBehaviour
 
     private SafeInt GetPrice()
     {
-        return (SafeInt)(startPrice * Mathf.Pow(priceMultiplier, lvl));
+        return (SafeInt)(startPrice * Mathf.Pow(priceMultiplier, Lvl));
     }
 
     private void SaveData()
     {
-        PlayerPrefsSafe.SetInt(ImprovementType + "LVL", Lvl);
+        PlayerPrefsSafe.SetInt(ImprovementType + "Lvl", Lvl);
     }
 
     private void OnDestroy()

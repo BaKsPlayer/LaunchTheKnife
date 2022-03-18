@@ -31,11 +31,9 @@ public class RewardingState : State
 
         if (timer >= 1f)
         {
-            _gameKnife.CalculateCoinsMultiplyer();
             int coinsAmount = Mathf.RoundToInt(_gameKnife.CoinsPerHit * _gameKnife.CoinsMultiplyer);
             GameStats.Instance.AddCoins(coinsAmount);
-
-            GameStats.Instance.IncreaseScore();
+            _gameKnife.CoinsTextFiller.Fill(GameStats.Instance.CoinsForSession - coinsAmount, GameStats.Instance.CoinsForSession);
 
             _gameKnife.SetState(movingState); 
         }

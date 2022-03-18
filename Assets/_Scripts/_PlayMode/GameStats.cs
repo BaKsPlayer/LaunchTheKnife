@@ -9,6 +9,8 @@ public class GameStats
     public SafeInt BestScore { get; private set; }
 
     public Action OnCoinsChanged;
+    public Action OnScoreChanged;
+    public Action OnBestScoreChanged;
 
     private static GameStats instance;
     public static GameStats Instance
@@ -18,34 +20,40 @@ public class GameStats
             if (instance == null)
             {
                 instance = new GameStats();
-            }
+            } 
 
             return instance;
         }
     }
 
+    private GameStats()
+    {
+        BestScore = PlayerPrefsSafe.GetInt("BestScore");
+    } 
+
     public void AddCoins(int amount)
     {
         CoinsForSession += amount;
-        OnCoinsChanged?.Invoke();
     }
 
     public void ResetStats()
     {
         Score = 0;
-        CoinsForSession = 0;
+        OnScoreChanged?.Invoke();
 
+        CoinsForSession = 0;
         OnCoinsChanged?.Invoke();
     }
 
     public void IncreaseScore()
     {
         Score++;
-    }
+        OnScoreChanged?.Invoke();
 
-    public void SetBestScore(int value)
-    {
-        BestScore = value;
+        if (Score > BestScore)
+        {
+            BestScore = Score;
+            OnBestScoreChanged?.Invoke();
+        }
     }
-
 }

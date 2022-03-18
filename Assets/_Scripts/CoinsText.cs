@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,14 +14,14 @@ public class CoinsText : MonoBehaviour
 
     private void OnEnable()
     {
-        Wallet.Instance.OnValueChanged += CoinsChanged;
+        Wallet.Instance.OnValueChanged -= CoinsChanged;
 
         CoinsChanged();
     }
 
     private void OnDisable()
     {
-        Wallet.Instance.OnValueChanged -= CoinsChanged;
+        Wallet.Instance.OnValueChanged += CoinsChanged;
     }
 
     private void CoinsChanged()
@@ -28,5 +29,15 @@ public class CoinsText : MonoBehaviour
         _text.text = Wallet.Instance.Coins.ToString();
     }
 
-    
+    public void DisableComponent(float delay)
+    {
+        StartCoroutine(Disable(delay));
+    }
+
+    private IEnumerator Disable(float delay =0)
+    {
+        yield return new WaitForSeconds(delay);
+
+        enabled = false;
+    }
 }

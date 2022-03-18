@@ -85,6 +85,7 @@ public class KnifeButton : MonoBehaviour
     public void SetSelectedKnifeIcon()
     {
         knifeIcon.sprite = colorSprite;
+        knifeShop.GameKnife.SetSkin(colorSprite);
     }
 
     public void SetDeselectedKnifeIcon()

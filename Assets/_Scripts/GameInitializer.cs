@@ -22,8 +22,6 @@ public class GameInitializer : MonoBehaviour
 
         gameManager.coinsText.text = Wallet.Instance.Coins.ToString();
 
-        gameManager.bestScoreText.text = PlayerPrefsSafe.GetInt("BestScore").ToString();
-
         Application.targetFrameRate = 60;
 
         Destroy(startScreen, 0.6f);

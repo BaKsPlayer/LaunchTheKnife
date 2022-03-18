@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameKnife : MonoBehaviour
 {
@@ -16,6 +16,9 @@ public class GameKnife : MonoBehaviour
 
     [SerializeField] private LoseMenuManager loseMenu;
     [SerializeField] private TapHandler tapHandler;
+
+    [SerializeField] private CoinsFiller coinsTextFiller;
+    public CoinsFiller CoinsTextFiller => coinsTextFiller;
 
     [Header("States")]
     [SerializeField] private State movingState;
@@ -35,22 +38,16 @@ public class GameKnife : MonoBehaviour
     public Vector2 CenterPosition => new Vector2(0, 1.57f);
     public Transform m_Transform{ get; private set; }
 
-    [SerializeField]
-    private State CurrentState;
+    public UnityAction OnKnivesCountChanged;
 
-    private float rotateSpeed;
-    public float RotateSpeed => rotateSpeed;
-
-    private float coinsMultiplyer;
-    public float CoinsMultiplyer => coinsMultiplyer;
+    public SafeFloat RotateSpeed { get; private set; }
+    public SafeFloat CoinsMultiplyer { get; private set; }
+    public SafeInt LeftKnivesCount { get; private set; }
 
     private int spawnIndex;
-    private float currentFlightSpeed;
+    private State CurrentState;
 
-    private int leftKnivesCount;
-
-    private RaycastHit2D hit;
-    public RaycastHit2D Hit => hit;
+    public RaycastHit2D Hit { get; private set; }
 
     public Vector2 Position => m_Transform.position;
     public Vector2 FlightDirection => m_Transform.GetChild(0).position - m_Transform.position;
@@ -98,7 +95,7 @@ public class GameKnife : MonoBehaviour
     public void Launch()
     {
         target.Stop();
-        hit = Physics2D.Raycast(m_Transform.position, FlightDirection, 100, toHit);
+        Hit = Physics2D.Raycast(m_Transform.position, FlightDirection, 100, toHit);
         SetState(flyingState);
 
         CalculateCoinsMultiplyer();
@@ -108,7 +105,7 @@ public class GameKnife : MonoBehaviour
 
     public void Fly()
     {
-        transform.Translate(Vector3.right * currentFlightSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * flightSpeed * Time.deltaTime);
     }
 
     public void MoveTo(Vector2 target)
@@ -123,7 +120,7 @@ public class GameKnife : MonoBehaviour
 
     public void Rotate()
     {
-       m_Transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+       m_Transform.Rotate(Vector3.forward * RotateSpeed * Time.deltaTime);
     }
 
     public void HitTarget()
@@ -131,16 +128,17 @@ public class GameKnife : MonoBehaviour
         VibrationManager.Instance.Vibrate(VibrationType.Heavy);
 
         transform.SetParent(target.transform, true);
+        GameStats.Instance.IncreaseScore();
 
-        currentFlightSpeed = 0;
         target.Hit();
     }
 
     public void LoseKnife()
     {
-        leftKnivesCount--;
+        LeftKnivesCount--;
+        OnKnivesCountChanged?.Invoke();
 
-        if (leftKnivesCount >= 0)
+        if (LeftKnivesCount >= 0)
         {
             Spawn();
             SetState(movingState);
@@ -162,12 +160,10 @@ public class GameKnife : MonoBehaviour
         spawnIndex = Random.Range(0, 2);
         m_Transform.position = spawns[spawnIndex].position;
 
-        currentFlightSpeed = flightSpeed;
-
-        rotateSpeed = difficult.Evaluate(GameStats.Instance.Score);
+        RotateSpeed = difficult.Evaluate(GameStats.Instance.Score);
 
         if (Random.Range(0, 2) == 0)
-            rotateSpeed = -rotateSpeed;
+            RotateSpeed = -RotateSpeed;
 
         gameObject.SetActive(true);
         tapHandler.enabled = true;
@@ -176,22 +172,28 @@ public class GameKnife : MonoBehaviour
 
     public void CalculateCoinsMultiplyer()
     {
-        float distanceFromTargetCenter = Vector2.Distance(hit.point, target.transform.position);
+        float distanceFromTargetCenter = Vector2.Distance(Hit.point, target.transform.position);
 
         if (distanceFromTargetCenter <= 0.09f)
-            coinsMultiplyer = 2f;
+            CoinsMultiplyer = 2f;
         else if (distanceFromTargetCenter <= 0.22f)
-            coinsMultiplyer = 1.5f;
+            CoinsMultiplyer = 1.5f;
         else if (distanceFromTargetCenter <= 0.37f)
-            coinsMultiplyer = 1.25f;
+            CoinsMultiplyer = 1.25f;
         else
-            coinsMultiplyer = 1f;
+            CoinsMultiplyer = 1f;
+    }
+
+    public void SetSkin(Sprite skin)
+    {
+        GetComponent<SpriteRenderer>().sprite = skin;
     }
 
     private void GameStarted()
     {
         Spawn();
         SetState(movingState);
-        leftKnivesCount = knivesNumberImprover.CurrentValue - 1;
+        LeftKnivesCount = knivesNumberImprover.CurrentValue - 1;
+        OnKnivesCountChanged?.Invoke();
     }
 }

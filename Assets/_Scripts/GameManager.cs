@@ -43,30 +43,27 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyUp(KeyCode.C))
         {
             Wallet.Instance.AddCoins(100);
             coinsText.text = Wallet.Instance.Coins.ToString();
         }
-
-
     }
 
-    private void OnEnable()
-    {
-        Wallet.Instance.OnValueChanged += CoinsChanged;
-    }
+    //private void OnEnable()
+    //{
+    //    Wallet.Instance.OnValueChanged += CoinsChanged;
+    //}
 
-    private void OnDisable()
-    {
-        Wallet.Instance.OnValueChanged -= CoinsChanged;
-    }
+    //private void OnDisable()
+    //{
+    //    Wallet.Instance.OnValueChanged -= CoinsChanged;
+    //}
 
-    private void CoinsChanged()
-    {
-        coinsText.text = Wallet.Instance.Coins.ToString();
-    }
+    //private void CoinsChanged()
+    //{
+    //    coinsText.text = Wallet.Instance.Coins.ToString();
+    //}
 
     public void RestartGame()
     {

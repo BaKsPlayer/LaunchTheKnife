@@ -19,6 +19,14 @@ public class GameController : MonoBehaviour
 
     private bool isGameRestarting;
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            Wallet.Instance.AddCoins(100);
+        }
+    }
+
     public void StartGame()
     {
         isGameRestarting = false;

@@ -1803,9 +1803,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ContinueGame
+      - m_Target: {fileID: 855590860}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: UnpauseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4262,6 +4262,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1177291041}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &250470311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4443,7 +4455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 925845612}
+  m_Material: {fileID: 2049841089}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4981,6 +4993,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 323.99997}
   m_SizeDelta: {x: 840, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!21 &315580734
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &318877992
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,7 +5440,6 @@ MonoBehaviour:
   toggleOn: {fileID: 7868448470804483731, guid: 1e138449ad96343fdaec7895886402d7, type: 3}
   toggleOff: {fileID: -5106396533832540882, guid: 1e138449ad96343fdaec7895886402d7, type: 3}
   scorePanel: {fileID: 1270959369}
-  vibrator: {fileID: 0}
 --- !u!95 &334861763
 Animator:
   serializedVersion: 3
@@ -5690,6 +5737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3e292c63f404aabbd444d81f625c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 1.15
   duration: 0.5
 --- !u!114 &364510401
 MonoBehaviour:
@@ -6480,6 +6528,7 @@ MonoBehaviour:
   purchasePanel: {fileID: 1469589041}
   boughtPanel: {fileID: 1618709163}
   demoKnife: {fileID: 650565302}
+  gameKnife: {fileID: 877585301}
   coinsText: {fileID: 1224818709}
   advertButton: {fileID: 1163562908}
   allKnives:
@@ -6756,6 +6805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117a22d8904e64cc08f9a80d96992c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalCoinsText: {fileID: 364510401}
   scoreText: {fileID: 1126221109}
   bestScoreText: {fileID: 2034082820}
   sessionCoinsText: {fileID: 1883177234}
@@ -7094,7 +7144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1836587961}
+  m_Material: {fileID: 315580734}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -9839,9 +9889,9 @@ RectTransform:
   m_Father: {fileID: 1687594129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6, y: -36}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661875028
@@ -10795,6 +10845,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1177291041}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &689547132
 MonoBehaviour:
@@ -12575,7 +12637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 58, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813725734
@@ -13199,6 +13261,7 @@ MonoBehaviour:
   gameController: {fileID: 855590860}
   loseMenu: {fileID: 430527665}
   tapHandler: {fileID: 1485699381}
+  coinsTextFiller: {fileID: 1869971700}
   movingState: {fileID: 11400000, guid: 40b8f3634810e4d80997e314a2488ce3, type: 2}
   flyingState: {fileID: 11400000, guid: ef63cc8abf9c6420e9bace941717909d, type: 2}
   flightSpeed: 12
@@ -13260,7 +13323,6 @@ MonoBehaviour:
   spawns:
   - {fileID: 604067893}
   - {fileID: 443345393}
-  CurrentState: {fileID: 0}
 --- !u!1 &879614712
 GameObject:
   m_ObjectHideFlags: 0
@@ -14072,42 +14134,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912189137}
   m_CullTransparentMesh: 1
---- !u!21 &925845612
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &933844241
 GameObject:
   m_ObjectHideFlags: 0
@@ -15786,7 +15812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 34.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065574051
@@ -17561,6 +17587,7 @@ GameObject:
   - component: {fileID: 1177291039}
   - component: {fileID: 1177291038}
   - component: {fileID: 1177291040}
+  - component: {fileID: 1177291041}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17641,7 +17668,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3e292c63f404aabbd444d81f625c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   duration: 0.5
+--- !u!114 &1177291041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177291036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb869788cfa14e94b7ce47bfdf06241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1181672318
 GameObject:
   m_ObjectHideFlags: 0
@@ -18141,6 +18181,7 @@ GameObject:
   - component: {fileID: 1224818710}
   - component: {fileID: 1224818709}
   - component: {fileID: 1224818708}
+  - component: {fileID: 1224818711}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -18179,7 +18220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3e292c63f404aabbd444d81f625c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
+  delay: 0
+  duration: 2
 --- !u!114 &1224818709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18222,6 +18264,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224818706}
   m_CullTransparentMesh: 1
+--- !u!114 &1224818711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224818706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb869788cfa14e94b7ce47bfdf06241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1225539341
 GameObject:
   m_ObjectHideFlags: 0
@@ -19249,6 +19303,7 @@ GameObject:
   - component: {fileID: 1270959370}
   - component: {fileID: 1270959372}
   - component: {fileID: 1270959371}
+  - component: {fileID: 1270959373}
   m_Layer: 5
   m_Name: ScorePanel
   m_TagString: Untagged
@@ -19318,6 +19373,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270959369}
   m_CullTransparentMesh: 1
+--- !u!114 &1270959373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270959369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674d375951aba449ab51fb164f2fa8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameKnife: {fileID: 877585301}
+  coinsForSessionText: {fileID: 1869971698}
+  scoreText: {fileID: 109555724}
+  bestScoreText: {fileID: 946167430}
+  knivesCountText: {fileID: 410770342}
 --- !u!1 &1308490191
 GameObject:
   m_ObjectHideFlags: 0
@@ -21588,6 +21660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   improvementType: 0
   StartPrice: 100
+  coinsTextFiller: {fileID: 1177291040}
   priceText: {fileID: 1535854416}
   buttonImage: {fileID: 1432849462}
   buttonText: {fileID: 261142462}
@@ -22927,7 +23000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 34.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535854416
@@ -23004,7 +23077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1559415542
 Transform:
   m_ObjectHideFlags: 0
@@ -23026,7 +23099,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559415541}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b30aa4d543e924b51962fd3937b5e2be, type: 3}
   m_Name: 
@@ -26695,42 +26768,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833413432}
   m_CullTransparentMesh: 1
---- !u!21 &1836587961
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1840872689
 GameObject:
   m_ObjectHideFlags: 0
@@ -27222,6 +27259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3e292c63f404aabbd444d81f625c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   duration: 0.5
 --- !u!1 &1874482415
 GameObject:
@@ -27579,6 +27617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3e292c63f404aabbd444d81f625c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   duration: 0.5
 --- !u!1 &1884961476
 GameObject:
@@ -28447,8 +28486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 334861762}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
@@ -28459,8 +28498,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1559415543}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 855590860}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -29106,6 +29145,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034082818}
   m_CullTransparentMesh: 1
+--- !u!21 &2049841089
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &2050181389
 GameObject:
   m_ObjectHideFlags: 0
@@ -29542,6 +29617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   improvementType: 1
   StartPrice: 50
+  coinsTextFiller: {fileID: 1177291040}
   priceText: {fileID: 1065574051}
   buttonImage: {fileID: 1774423127}
   buttonText: {fileID: 442460028}

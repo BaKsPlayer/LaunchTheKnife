@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class KnifeShop : MonoBehaviour
 {
-    KnifeButton _activeButton;
-    KnifeButton _activeKnife;
+    private KnifeButton _activeButton;
+    private KnifeButton _activeKnife;
     public bool isGetingRandomKnife { get; private set; }
 
     [Header("Buy Random Knife")]
@@ -25,6 +25,9 @@ public class KnifeShop : MonoBehaviour
     [Header("Other")]
     [SerializeField] private DemoKnife demoKnife;
     public DemoKnife DemoKnife => demoKnife;
+
+    [SerializeField] private GameKnife gameKnife;
+    public GameKnife GameKnife => gameKnife;
 
     [SerializeField] private Text coinsText;
     public Text CoinsText => coinsText;
@@ -104,7 +107,8 @@ public class KnifeShop : MonoBehaviour
         {
             if (!isFree)
             {
-                Wallet.Instance.SpendCoins(_randomKnifePrice);
+                Wallet.Instance.SpendCoins(_activeButton.Price);
+                coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins + _activeButton.Price, Wallet.Instance.Coins);
             }
 
             PlayerPrefsSafe.SetInt("KnifeLvl_" + _activeButton.Id, 1);
@@ -126,6 +130,7 @@ public class KnifeShop : MonoBehaviour
         if (Wallet.Instance.Coins >= _randomKnifePrice)
         {
             Wallet.Instance.SpendCoins(_randomKnifePrice);
+            coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins + _randomKnifePrice, Wallet.Instance.Coins);
 
             if (nonPurchasedKnives.ToArray().Length >= 2)
                 StartCoroutine(RandomKnife());

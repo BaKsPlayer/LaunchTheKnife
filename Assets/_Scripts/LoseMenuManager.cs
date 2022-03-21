@@ -95,7 +95,7 @@ public class LoseMenuManager : MonoBehaviour
         rewardTextAnimation.gameObject.SetActive(true);
         rewardTextAnimation.Play();
 
-        totalCoinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins - coinsAmount, Wallet.Instance.Coins);
+        totalCoinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins - coinsAmount, Wallet.Instance.Coins, rewardTextAnimation.clip.length);
     }
 
     public void RewardLoseMenu()

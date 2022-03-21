@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -15,17 +16,19 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject startGameOverlay;
     [SerializeField] private GameObject knifeSpawner;
 
+    [SerializeField] private GameObject background;
+    [SerializeField] private TapHandler tapHandler;
+
+    [Header("Training Prefabs")]
+    [SerializeField] private GameObject hintPrefab;
+    [SerializeField] private GameObject aimPrefab;
+
     public Action OnGameStarted;
+    public Action OnTrainingCompleted;
 
     private bool isGameRestarting;
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            Wallet.Instance.AddCoins(100);
-        }
-    }
+    public static GameController Instance { get; private set; }
 
     public void StartGame()
     {
@@ -63,10 +66,21 @@ public class GameController : MonoBehaviour
         target.gameObject.SetActive(true);
         target.Create();
 
+        if (PlayerPrefs.GetString("IsTrainingComplete") != "YES")
+            tapHandler.GetComponent<Button>().onClick.AddListener(CompleteTraining);
+        
         yield return new WaitForSeconds(1.15f);
 
         startGameOverlay.SetActive(false);
         OnGameStarted?.Invoke();
+    }
+
+    private void CompleteTraining()
+    {
+        PlayerPrefs.SetString("IsTrainingComplete", "YES");
+        tapHandler.GetComponent<Button>().onClick.RemoveListener(CompleteTraining);
+
+        OnTrainingCompleted?.Invoke();
     }
 
     public void PauseGame()

@@ -29,6 +29,7 @@ public class GameKnife : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [Space(height: 15f)]
+    [SerializeField] private Vector2 border;
     [SerializeField] private AnimationCurve difficult;
     [SerializeField] private LayerMask toHit;
 
@@ -44,13 +45,14 @@ public class GameKnife : MonoBehaviour
     public SafeFloat CoinsMultiplyer { get; private set; }
     public SafeInt LeftKnivesCount { get; private set; }
 
-    private int spawnIndex;
-    private State CurrentState;
-
+    public State CurrentState { get; private set; }
     public RaycastHit2D Hit { get; private set; }
+
+    private int spawnIndex;
 
     public Vector2 Position => m_Transform.position;
     public Vector2 FlightDirection => m_Transform.GetChild(0).position - m_Transform.position;
+    public bool IsAbroad => Mathf.Abs(Position.x) > border.x || Mathf.Abs(Position.y) > border.y;
 
     public Transform finalPoint
     {
@@ -135,6 +137,7 @@ public class GameKnife : MonoBehaviour
 
     public void LoseKnife()
     {
+        gameObject.SetActive(false);
         LeftKnivesCount--;
         OnKnivesCountChanged?.Invoke();
 
@@ -169,7 +172,6 @@ public class GameKnife : MonoBehaviour
         tapHandler.enabled = true;
     }
 
-
     public void CalculateCoinsMultiplyer()
     {
         float distanceFromTargetCenter = Vector2.Distance(Hit.point, target.transform.position);
@@ -196,4 +198,6 @@ public class GameKnife : MonoBehaviour
         LeftKnivesCount = knivesNumberImprover.CurrentValue - 1;
         OnKnivesCountChanged?.Invoke();
     }
+
+   
 }

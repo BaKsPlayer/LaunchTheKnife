@@ -193,6 +193,7 @@ public class KnifeShop : MonoBehaviour
     public void Reward50Coins()
     {
         Wallet.Instance.AddCoins(50);
+        coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins - 50, Wallet.Instance.Coins);
     }
 
     public void OpenKnifeShop()

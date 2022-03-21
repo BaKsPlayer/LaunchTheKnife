@@ -27,14 +27,12 @@ public class StudyManager : MonoBehaviour
     {
         if (playerController.isGameMode && playerController.nowKnife && PlayerPrefs.GetString("IsStudyComplete") != "YES" && !disabling)
         {
-
             float dist = Vector2.Distance(playerController.nowKnife.transform.position, playerController.center);
 
             if (dist <= 0.3f)
             {
-                //playerController.studyTip.gameObject.SetActive(true);
-
                 float a = 1 - (Mathf.Abs(playerController.target.transform.parent.localEulerAngles.z - playerController.nowKnife.transform.localEulerAngles.z) - 5) / 15;
+
                 playerController.rotateSpeed = Mathf.Lerp(15f, 150f, 1 - a);
                 playerController.background.color = Color.Lerp(new Color(1, 1, 1), new Color(0.75f, 0.75f, 0.75f), a);
 

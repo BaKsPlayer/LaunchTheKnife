@@ -25,9 +25,13 @@ public class Gift : MonoBehaviour
 
     private DateTime lastEnabled;
 
+    private Animation giftOverlayAnimation;
+
     private void Awake()
     {
         lastEnabled = DateTime.Now;
+
+        giftOverlayAnimation = giftOverlay.GetComponent<Animation>();
     }
 
     private void OnEnable()
@@ -90,12 +94,12 @@ public class Gift : MonoBehaviour
     {
         if (isGiftReady)
         {
-            coinsFiller.Fill(Wallet.Instance.Coins, Wallet.Instance.Coins + value);
-            Invoke("CloseGiftOverlayWithDelay", giftOverlay.GetComponent<Animation>().clip.length);
+            coinsFiller.Fill(Wallet.Instance.Coins, Wallet.Instance.Coins + value, giftOverlayAnimation.clip.length);
+            Invoke("CloseGiftOverlayWithDelay", giftOverlayAnimation.clip.length);
 
             giftText.text = $"+{value} ";
             giftOverlay.SetActive(true);
-            giftOverlay.GetComponent<Animation>().Play();
+            giftOverlayAnimation.Play();
 
             Wallet.Instance.AddCoins(value);
 

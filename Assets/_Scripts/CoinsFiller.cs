@@ -1,27 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 //Писал этот код по уроку (https://www.youtube.com/watch?v=ObcS4M6ILi4)
 public class CoinsFiller : MonoBehaviour
 {
-    [SerializeField] private float delay;
     [SerializeField] private float duration;
 
-    Text _text;
+    private Text _text;
 
     private void Awake()
     {
         _text = GetComponent<Text>();
     }
 
-    public void Fill(int startValue, int endValue)
+    public void Fill(int startValue, int endValue, float delay = 0)
     {
-        StartCoroutine(FillCoins(startValue, endValue));
+        StartCoroutine(FillCoins(startValue, endValue, delay));
     }
 
-    private IEnumerator FillCoins(float startValue, float endValue)
+    private IEnumerator FillCoins(float startValue, float endValue, float delay)
     {
         yield return new WaitForSeconds(delay);
 

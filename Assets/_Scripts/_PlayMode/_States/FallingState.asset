@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be68f132c82794c798f4cb458e08d3e1, type: 3}
-  m_Name: FlyingState
+  m_Script: {fileID: 11500000, guid: 1b638f91e086d450dade54c6fd62ab96, type: 3}
+  m_Name: FallingState
   m_EditorClassIdentifier: 
-  rewardingState: {fileID: 11400000, guid: 43227313eb46a4d85a6aa77945cc0303, type: 2}
-  fallingState: {fileID: 11400000, guid: 0a75557367d34468e863dc0438f10d56, type: 2}

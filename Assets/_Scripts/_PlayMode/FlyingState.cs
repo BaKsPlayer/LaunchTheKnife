@@ -4,11 +4,9 @@ using UnityEngine;
 public class FlyingState : State
 {
     [SerializeField] private State rewardingState;
-
-    [SerializeField] private Vector2 border; 
+    [SerializeField] private State fallingState;
 
     private RaycastHit2D hit;
-
     private bool isHitBackSide;
 
     public override void Init()
@@ -27,7 +25,7 @@ public class FlyingState : State
     {
         _gameKnife.Fly();
 
-        if (IsKnifeAbroad())
+        if (_gameKnife.IsAbroad)
             _gameKnife.LoseKnife();
 
         if (!hit)
@@ -36,18 +34,10 @@ public class FlyingState : State
         if (Vector2.Distance(_gameKnife.m_Transform.position, hit.point) < 0.3f)
         {
             if (isHitBackSide)
-            {
-                _gameKnife.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                _gameKnife.SetState(null);
-            }
+                _gameKnife.SetState(fallingState);
             else
                 _gameKnife.SetState(rewardingState);
         }
       
-    }
-
-    private bool IsKnifeAbroad()
-    {
-        return Mathf.Abs(_gameKnife.Position.x) > border.x || Mathf.Abs(_gameKnife.Position.y) > border.y;
     }
 }

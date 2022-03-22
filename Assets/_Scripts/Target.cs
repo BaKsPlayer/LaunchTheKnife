@@ -8,11 +8,10 @@ public class Target : MonoBehaviour
     [Range(0,100)]
     [SerializeField] private float scaleOffset;
 
+    public Transform parentTransform { get; private set; }
     public event Action OnHit;
 
     private Vector2 originalScale;
-
-    private Transform _parentTransform;
 
     private Animator m_Animator;
 
@@ -27,9 +26,9 @@ public class Target : MonoBehaviour
     private void Awake()
     {
         originalScale = transform.localScale;
-        _parentTransform = transform.parent;
+        parentTransform = transform.parent;
 
-        m_Animator = _parentTransform.GetComponent<Animator>();
+        m_Animator = parentTransform.GetComponent<Animator>();
     }
 
     private void Update()
@@ -51,7 +50,7 @@ public class Target : MonoBehaviour
 
             distance -= speed * Time.deltaTime;
 
-            _parentTransform.Rotate(Vector3.forward * speed * Time.deltaTime * dir);
+            parentTransform.Rotate(Vector3.forward * speed * Time.deltaTime * dir);
         }
         else
         {
@@ -65,7 +64,11 @@ public class Target : MonoBehaviour
     public void Create()
     {
         float rotZ = UnityEngine.Random.Range(-180f, 180f);
-        _parentTransform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+        if (PlayerPrefs.GetString("IsTrainingComplete")!="YES")
+            rotZ = UnityEngine.Random.Range(-164f, -16f);
+
+        parentTransform.rotation = Quaternion.Euler(0, 0, rotZ);
 
         float randomScaleOffset = UnityEngine.Random.Range(-scaleOffset, scaleOffset);
         float offset = 1 - (randomScaleOffset / 100);

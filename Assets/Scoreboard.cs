@@ -50,7 +50,8 @@ public class Scoreboard : MonoBehaviour
 
     private void KnivesCountChanged()
     {
-        knivesCountText.text = $"x{gameKnife.LeftKnivesCount}";
+        int knivesCount = (int)Mathf.Clamp(gameKnife.LeftKnivesCount, 0, Mathf.Infinity);
+        knivesCountText.text = $"x{knivesCount}";
     }
 
 

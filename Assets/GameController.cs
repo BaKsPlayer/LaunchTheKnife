@@ -16,17 +16,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject startGameOverlay;
     [SerializeField] private GameObject knifeSpawner;
 
-    [SerializeField] private GameObject background;
-    [SerializeField] private TapHandler tapHandler;
-
-    [Header("Training Prefabs")]
-    [SerializeField] private GameObject hintPrefab;
-    [SerializeField] private GameObject aimPrefab;
-
     public Action OnGameStarted;
     public Action OnTrainingCompleted;
 
     private bool isGameRestarting;
+
+    public float CurrentTimeScale { get; private set; } = 1;
 
     public static GameController Instance { get; private set; }
 
@@ -67,7 +62,7 @@ public class GameController : MonoBehaviour
         target.Create();
 
         if (PlayerPrefs.GetString("IsTrainingComplete") != "YES")
-            tapHandler.GetComponent<Button>().onClick.AddListener(CompleteTraining);
+            target.OnHit += CompleteTraining;
         
         yield return new WaitForSeconds(1.15f);
 
@@ -78,18 +73,20 @@ public class GameController : MonoBehaviour
     private void CompleteTraining()
     {
         PlayerPrefs.SetString("IsTrainingComplete", "YES");
-        tapHandler.GetComponent<Button>().onClick.RemoveListener(CompleteTraining);
+        target.OnHit -= CompleteTraining;
 
         OnTrainingCompleted?.Invoke();
     }
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        CurrentTimeScale = 0;
+        Time.timeScale = CurrentTimeScale;
     }
 
     public void UnpauseGame()
     {
-        Time.timeScale = 1;
+        CurrentTimeScale = 1;
+        Time.timeScale = CurrentTimeScale;
     }
 }

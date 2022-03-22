@@ -15,7 +15,7 @@ public class GameKnife : MonoBehaviour
     [SerializeField] private GameController gameController;
 
     [SerializeField] private LoseMenuManager loseMenu;
-    [SerializeField] private TapHandler tapHandler;
+    [SerializeField] private ClickHandler tapHandler;
 
     [SerializeField] private CoinsFiller coinsTextFiller;
     public CoinsFiller CoinsTextFiller => coinsTextFiller;
@@ -40,6 +40,7 @@ public class GameKnife : MonoBehaviour
     public Transform m_Transform{ get; private set; }
 
     public UnityAction OnKnivesCountChanged;
+    public UnityAction OnKnifeReachedCenter;
 
     public SafeFloat RotateSpeed { get; private set; }
     public SafeFloat CoinsMultiplyer { get; private set; }
@@ -122,7 +123,7 @@ public class GameKnife : MonoBehaviour
 
     public void Rotate()
     {
-       m_Transform.Rotate(Vector3.forward * RotateSpeed * Time.deltaTime);
+       m_Transform.Rotate(Vector3.forward * RotateSpeed  * Time.deltaTime);
     }
 
     public void HitTarget()
@@ -199,5 +200,5 @@ public class GameKnife : MonoBehaviour
         OnKnivesCountChanged?.Invoke();
     }
 
-   
+
 }

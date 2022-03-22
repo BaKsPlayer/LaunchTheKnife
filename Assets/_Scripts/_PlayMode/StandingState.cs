@@ -11,13 +11,13 @@ public class StandingState : State
     {
         base.Init();
 
+        _gameKnife.OnKnifeReachedCenter?.Invoke();
         leftDegreesToChangeState = 1080f;
     }
 
     public override void Update()
     {
         _gameKnife.Rotate();
-
         leftDegreesToChangeState -= Mathf.Abs(_gameKnife.RotateSpeed) * Time.deltaTime;
 
         if (leftDegreesToChangeState <= 0)

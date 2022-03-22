@@ -23,9 +23,9 @@ public class TrainingHint : TrainingElement
 
     protected override void Update()
     {
-        float a = Mathf.Lerp(0.7f, 1, opacity); ;
+        float a = Mathf.Lerp(0.7f, 1, knifeToTargetAngleRatio) ;
         text.color = new Color(1, 1, 1, a);
 
-        m_Transform.localScale = Vector2.Lerp(initialScale, initialScale * scaleOffset, a);
+        m_Transform.localScale = Vector2.Lerp(initialScale, initialScale * scaleOffset, knifeToTargetAngleRatio);
     }
 }

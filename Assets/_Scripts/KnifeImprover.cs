@@ -38,16 +38,6 @@ public class KnifeImprover : MonoBehaviour
         Initialize();
     }
 
-    private void OnEnable()
-    {
-        Wallet.Instance.OnValueChanged += CoinsChanged;
-    }
-
-    private void OnDisable()
-    {
-        Wallet.Instance.OnValueChanged -= CoinsChanged;
-    }
-
     private void Initialize()
     {
         if (improvementType == ImproveType.KnivesNumber)
@@ -76,6 +66,7 @@ public class KnifeImprover : MonoBehaviour
         buttonText.text = $"x{CurrentValue}<size=42>+{improvementValue}</size>";
 
         SaveManager.Instance.OnSaveData += SaveData;
+        Wallet.Instance.OnValueChanged += CoinsChanged;
     }
 
     public void Improve()
@@ -127,5 +118,6 @@ public class KnifeImprover : MonoBehaviour
     private void OnDestroy()
     {
         SaveManager.Instance.OnSaveData -= SaveData;
+        Wallet.Instance.OnValueChanged -= CoinsChanged;
     }
 }

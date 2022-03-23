@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -316,6 +317,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      opilki_3: 5414866709260166829
+      opilki_1: 4551301634126405248
+      opilki_5: 2738338993586147704
+      opilki_6: -4317103769167015799
+      opilki_7: -2262608426390759292
+      opilki_4: 8797873630953277586
+      opilki_0: 8939225315647714224
+      opilki_2: -8551606101994446495
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

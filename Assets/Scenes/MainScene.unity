@@ -2116,7 +2116,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &132104683
@@ -3151,7 +3151,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &181253602
@@ -4455,7 +4455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 413358416}
+  m_Material: {fileID: 1964273300}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -5175,7 +5175,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415541}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -5423,6 +5423,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &352276157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352276158}
+  m_Layer: 0
+  m_Name: '   KNIFESPAWNS:'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &352276158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352276157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &355994567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,42 +6521,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: x10
---- !u!21 &413358416
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &413520146
 GameObject:
   m_ObjectHideFlags: 0
@@ -6537,7 +6531,6 @@ GameObject:
   m_Component:
   - component: {fileID: 413520147}
   - component: {fileID: 413520148}
-  - component: {fileID: 413520150}
   - component: {fileID: 413520149}
   m_Layer: 5
   m_Name: KnifeShop
@@ -6627,23 +6620,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &413520150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413520146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be1ad5b3b704479385d6ddb75c48c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  purchasedKnifeColor: {r: 1, g: 1, b: 1, a: 1}
-  nonPurchasedKnifeColor: {r: 0.48, g: 0.48, b: 0.48, a: 0.69803923}
-  selectedButtonSprite: {fileID: 6594788466171415369, guid: 4c95d94b4e09b41e18daa5c442164ec4, type: 3}
-  unselectedButtonSprite: {fileID: -2398381544524043197, guid: 4c95d94b4e09b41e18daa5c442164ec4, type: 3}
-  randomButtonSprite: {fileID: 758313967764362488, guid: 4c95d94b4e09b41e18daa5c442164ec4, type: 3}
 --- !u!1 &422186714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,7 +6917,6 @@ MonoBehaviour:
   settings: {fileID: 334861762}
   knifeShop: {fileID: 413520148}
   startScreen: {fileID: 131721899}
-  gameManager: {fileID: 1559415543}
 --- !u!4 &432692295
 Transform:
   m_ObjectHideFlags: 0
@@ -6949,12 +6924,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432692293}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 824256268}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &433584965
 GameObject:
@@ -7237,7 +7212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2109021611}
+  m_Material: {fileID: 698761147}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -7348,7 +7323,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &443345394
 Animator:
@@ -8649,7 +8624,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -9186,7 +9161,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &590300223
@@ -9455,7 +9430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &608997490
 PrefabInstance:
@@ -9984,7 +9959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 60.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661875028
@@ -10214,7 +10189,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &666645887
@@ -10989,6 +10964,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689547128}
   m_CullTransparentMesh: 1
+--- !u!21 &698761147
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &701638119
 GameObject:
   m_ObjectHideFlags: 0
@@ -12212,6 +12223,36 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0049438006, y: 20.999}
   m_SizeDelta: {x: 826.35, y: 115.89}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &786270577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786270578}
+  m_Layer: 0
+  m_Name: '   BACKGROUNDS:'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786270578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791201577
 GameObject:
   m_ObjectHideFlags: 0
@@ -12730,7 +12771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 58, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813725734
@@ -12856,7 +12897,42 @@ Transform:
   - {fileID: 171059351}
   - {fileID: 761100264}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &824256267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824256268}
+  m_Layer: 0
+  m_Name: Services
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &824256268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824256267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2110877620}
+  - {fileID: 1392989644}
+  - {fileID: 855590861}
+  - {fileID: 432692295}
+  - {fileID: 1710864685}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843387450
 GameObject:
@@ -13156,12 +13232,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855590859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 824256268}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859439579
 GameObject:
@@ -13375,7 +13451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4946980559927483195, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
       propertyPath: m_LocalScale.x
@@ -13847,7 +13923,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &881424199
@@ -14347,6 +14423,7 @@ GameObject:
   - component: {fileID: 933844245}
   - component: {fileID: 933844244}
   - component: {fileID: 933844243}
+  - component: {fileID: 933844247}
   m_Layer: 5
   m_Name: RateUs_Button
   m_TagString: Untagged
@@ -14437,10 +14514,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 564466206}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
+      - m_Target: {fileID: 933844247}
+        m_TargetAssemblyTypeName: RateUs, Assembly-CSharp
+        m_MethodName: OpenStorePage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14487,6 +14564,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933844241}
   m_CullTransparentMesh: 1
+--- !u!114 &933844247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933844241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fad7e10fd50343589ec49714b6abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939451542
 GameObject:
   m_ObjectHideFlags: 0
@@ -14971,7 +15060,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &981620318
@@ -15296,7 +15385,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &999527094
@@ -15905,7 +15994,7 @@ Transform:
   m_Children:
   - {fileID: 905770288}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1063798012
 Animator:
@@ -16012,7 +16101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 34.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065574051
@@ -16249,7 +16338,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OpenShop
         m_Mode: 1
@@ -17043,7 +17132,7 @@ MonoBehaviour:
   price: 1000
   knifeIcon: {fileID: 483373039}
   knifeShop: {fileID: 413520148}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 11400000, guid: f2aea7216468140c9a6ef6ef8337991d, type: 2}
   colorSprite: {fileID: 1205416701152040810, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
   nonColorSprite: {fileID: -7561877552320588135, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1118911185
@@ -20740,12 +20829,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392989642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 824256268}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395754449
 GameObject:
@@ -21458,7 +21547,7 @@ MonoBehaviour:
   price: 1000
   knifeIcon: {fileID: 326538339}
   knifeShop: {fileID: 413520148}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 11400000, guid: f2aea7216468140c9a6ef6ef8337991d, type: 2}
   colorSprite: {fileID: -2354044729926064474, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
   nonColorSprite: {fileID: 2646150636597740373, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1444571687
@@ -22081,7 +22170,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1479569636
@@ -22732,7 +22821,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1506817580
@@ -22910,7 +22999,7 @@ RectTransform:
   - {fileID: 413520147}
   - {fileID: 131721900}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -23088,7 +23177,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1515703137
@@ -23198,7 +23287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 34.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535854416
@@ -23257,180 +23346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &1559415541
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1559415542}
-  - component: {fileID: 1559415543}
-  - component: {fileID: 1559415544}
-  - component: {fileID: 1559415548}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1559415542
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559415541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1559415543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559415541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30aa4d543e924b51962fd3937b5e2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 109555724}
-  bestScoreText: {fileID: 946167430}
-  knivesText: {fileID: 410770342}
-  knivesUpgradeButton: {fileID: 1432849462}
-  moneyUpgradeButton: {fileID: 1774423127}
-  itDoesntWork: {fileID: 564466206}
-  settings: {fileID: 334861760}
-  knivesShop: {fileID: 413520146}
-  loseMenu: {fileID: 430527663}
-  mainScene: {fileID: 1717204399}
-  inGame: {fileID: 116454123}
-  startText: {fileID: 1194876784}
-  startGameOverlay: {fileID: 640442197}
-  startScreen: {fileID: 131721899}
-  coinsText: {fileID: 1177291038}
-  nowCostKnifeText: {fileID: 1535854416}
-  nowCostMoneyText: {fileID: 1065574051}
-  moneyUpgradeButtonText: {fileID: 442460028}
-  knivesUpgradeButtonText: {fileID: 261142462}
-  sessionCoinsText: {fileID: 1869971698}
-  activeUpgrade: {fileID: -8783271214009510282, guid: cc3242b18660648c683034de07a22804, type: 3}
-  inactiveUpgrade: {fileID: 862538630911786216, guid: cc3242b18660648c683034de07a22804, type: 3}
---- !u!114 &1559415544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559415541}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f022608f0b04c51b466c1449c387f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flySpeed: 1
-  rotateSpeed: 550
-  startSpeed: 7
-  nowMultiplier: 0
-  targetOriginalScale: {x: 0, y: 0}
-  targetScaleOffset: 0
-  target: {fileID: 905770287}
-  knife: {fileID: 4946980559927483193, guid: 01c41b9574d8c4756af477c2e9ccfc7e, type: 3}
-  studyAim: {fileID: 4112048725427493282, guid: 2e0560ac44f704b7880f6b06fcb6bcad, type: 3}
-  rewardText: {fileID: 1258953440}
-  knifeSpawns:
-  - {fileID: 604067891}
-  - {fileID: 443345391}
-  knives:
-  - {fileID: 4946980559927483193, guid: 50f99d6b0454f4998a90d0f84e11dcb6, type: 3}
-  - {fileID: 3571039167706077526, guid: e21b05da87fc740aa835d3dc2f11f9b1, type: 3}
-  - {fileID: 3611011060752937438, guid: 72ce14a5a56ec49d59aca528e15a7f79, type: 3}
-  - {fileID: 909226541477025875, guid: 6be92dbea2902466da81dc6a8dad0835, type: 3}
-  nowKnife: {fileID: 0}
-  knifeWaitRot: 0
-  horizontalBorder: 0
-  isFly: 0
-  isTimeToNewKnife: 1
-  knifeStatus: 1
-  difficult:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 150
-      inSlope: 10
-      outSlope: 10
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 5
-      value: 200
-      inSlope: 12.5
-      outSlope: 12.5
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 10
-      value: 275
-      inSlope: 17.5
-      outSlope: 17.5
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 15
-      value: 375
-      inSlope: 25.294117
-      outSlope: 25.294117
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 100
-      value: 2975
-      inSlope: 30.588236
-      outSlope: 30.588236
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  isGameMode: 0
-  center: {x: 0, y: 1.57, z: 0}
-  toHit:
-    serializedVersion: 2
-    m_Bits: 320
-  background: {fileID: 1488979654}
-  studyTip: {fileID: 1657118760}
---- !u!114 &1559415548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559415541}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb63e72e0eb54a208231bf2aa978bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disabling: 0
 --- !u!1 &1568050144
 GameObject:
   m_ObjectHideFlags: 0
@@ -23889,7 +23804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1618709163
 GameObject:
@@ -24100,7 +24015,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1620330708
@@ -25246,12 +25161,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710864683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 824256268}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717204399
 GameObject:
@@ -25421,7 +25336,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 1969991548}
   knifeShop: {fileID: 413520148}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 11400000, guid: f2aea7216468140c9a6ef6ef8337991d, type: 2}
   colorSprite: {fileID: -5723618315912617923, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
   nonColorSprite: {fileID: -3488482804671198197, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1718101989
@@ -27647,7 +27562,7 @@ MonoBehaviour:
   price: 1000
   knifeIcon: {fileID: 467168962}
   knifeShop: {fileID: 413520148}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 11400000, guid: f2aea7216468140c9a6ef6ef8337991d, type: 2}
   colorSprite: {fileID: -7678601869563919383, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
   nonColorSprite: {fileID: -2914173702609090789, guid: 6ff22ace1cbd343c6be94ff32b9d9ef5, type: 3}
 --- !u!114 &1880213828
@@ -28067,7 +27982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 58, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906803032
@@ -28443,6 +28358,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955812002}
   m_CullTransparentMesh: 1
+--- !u!21 &1964273300
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AppsTools.net/ImageOutline
+  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1964453005
 GameObject:
   m_ObjectHideFlags: 0
@@ -28937,7 +28888,7 @@ MonoBehaviour:
   price: 0
   knifeIcon: {fileID: 0}
   knifeShop: {fileID: 0}
-  buttonParams: {fileID: 413520150}
+  buttonParams: {fileID: 0}
   colorSprite: {fileID: 0}
   nonColorSprite: {fileID: 0}
 --- !u!114 &1990755606
@@ -30056,42 +30007,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099278049}
   m_CullTransparentMesh: 1
---- !u!21 &2109021611
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AppsTools.net/ImageOutline
-  m_Shader: {fileID: 4800000, guid: 1787040d16b274a25b6b8f91797a5e9b, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 3
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0.75294125, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &2110877618
 GameObject:
   m_ObjectHideFlags: 0
@@ -30132,12 +30047,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110877618}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 824256268}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113817812
 GameObject:
@@ -30242,7 +30157,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559415543}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OpenShop
         m_Mode: 1

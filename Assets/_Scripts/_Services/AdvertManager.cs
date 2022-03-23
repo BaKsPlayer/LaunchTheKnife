@@ -29,6 +29,8 @@ public class AdvertManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+
+        Initialize();
     }
 
     public void Initialize()

@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace ButtonParameters
 {
-    public class KnifeButtonParameters : MonoBehaviour
+    [CreateAssetMenu(fileName = "KnifeButtonParameters", menuName = "KnifeButtonParameters", order = 0)]
+    public class KnifeButtonParameters : ScriptableObject
     {
         [Header("Colors")]
         [SerializeField] private Color purchasedKnifeColor;

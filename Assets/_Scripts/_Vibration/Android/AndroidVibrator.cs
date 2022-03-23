@@ -40,7 +40,7 @@ public class AndroidVibrator : MonoBehaviour, IVibrator
 
     public static void AndroidFeedbackHeavy() => AndroidVibrationEngine.Vibrate(40);
 
-    IEnumerator SuccessCoroutine()
+    private IEnumerator SuccessCoroutine()
     {
         int k = 0;
 
@@ -65,7 +65,7 @@ public class AndroidVibrator : MonoBehaviour, IVibrator
         }
     }
 
-    IEnumerator ErrorCoroutine()
+    private IEnumerator ErrorCoroutine()
     {
         int k = 0;
 

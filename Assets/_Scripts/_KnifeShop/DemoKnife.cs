@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class DemoKnife : MonoBehaviour
 {
-    Transform _transform;
-    Image _image;
-
     [SerializeField] float rotateSpeed;
 
-    // Start is called before the first frame update
-    void Awake()
+    private Transform _transform;
+    private Image _image;
+
+    private void Awake()
     {
         _transform = transform;
         _image = GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         _transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
     }

@@ -6,8 +6,8 @@ public class Gift : MonoBehaviour
 {
     [SerializeField] private int value;
 
-    [SerializeField] public GameObject giftOverlay;
-    [SerializeField] public Text giftText;
+    [SerializeField] private GameObject giftOverlay;
+    [SerializeField] private Text giftText;
 
     [SerializeField] private Text remainingTimeText;
 
@@ -75,9 +75,6 @@ public class Gift : MonoBehaviour
         if (isGiftReady)
             return;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            ResetGift();
-
         if (timer > 0)
             timer -= Time.deltaTime;
         else
@@ -136,10 +133,5 @@ public class Gift : MonoBehaviour
     private void OnDestroy()
     {
         SaveManager.Instance.OnSaveData -= SaveData;
-    }
-
-    private void ResetGift()
-    {
-        remainingTime = 1;
     }
 }

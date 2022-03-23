@@ -1,7 +1,6 @@
 using System.Collections;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
@@ -16,8 +15,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject startGameOverlay;
     [SerializeField] private GameObject knifeSpawner;
 
-    public Action OnGameStarted;
-    public Action OnTrainingCompleted;
+    public UnityAction OnGameStarted;
+    public UnityAction OnTrainingCompleted;
 
     private bool isGameRestarting;
 

@@ -33,7 +33,7 @@ public class KnifeImprover : MonoBehaviour
     private SafeInt price;
     private SafeFloat priceMultiplier;
 
-    private void Awake()
+    private void Start()
     {
         Initialize();
     }
@@ -67,6 +67,7 @@ public class KnifeImprover : MonoBehaviour
 
         SaveManager.Instance.OnSaveData += SaveData;
         Wallet.Instance.OnValueChanged += CoinsChanged;
+        CoinsChanged();
     }
 
     public void Improve()

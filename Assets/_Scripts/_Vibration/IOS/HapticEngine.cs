@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 public static class HapticEngine
 {
+#if UNITY_IOS
     [DllImport("__Internal")] private static extern void _IOSNotificationFeedbackError();
     [DllImport("__Internal")] private static extern void _IOSNotificationFeedbackSuccess();
     [DllImport("__Internal")] private static extern void _IOSNotificationFeedbackWarning();
@@ -21,4 +22,5 @@ public static class HapticEngine
     public static void ImpactFeedbackSoft() => _IOSImpactFeedbackSoft();
     public static void ImpactFeedbackRigid() => _IOSImpactFeedbackRigid();
     public static void SelectionFeedback() => _IOSSelectionFeedback();
+#endif
 }

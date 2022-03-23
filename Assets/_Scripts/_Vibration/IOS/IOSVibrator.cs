@@ -4,6 +4,7 @@ public class IOSVibrator : MonoBehaviour, IVibrator
 {
     public void Vibrate(VibrationType type)
     {
+#if UNITY_IOS
         switch (type)
         {
             case VibrationType.Error:
@@ -26,5 +27,6 @@ public class IOSVibrator : MonoBehaviour, IVibrator
                 HapticEngine.ImpactFeedbackHeavy();
                 break;
         }
+#endif
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-public interface IVibrator
+﻿public interface IVibrator
 {
     public void Vibrate(VibrationType type);
 }

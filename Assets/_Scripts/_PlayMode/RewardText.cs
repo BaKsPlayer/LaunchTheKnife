@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class RewardText : MonoBehaviour
 {
-    [SerializeField]private Text m_Text;
+    [SerializeField] private Text m_Text;
     [SerializeField] private Target target;
     [SerializeField] private GameKnife gameKnife;
 

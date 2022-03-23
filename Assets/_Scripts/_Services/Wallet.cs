@@ -1,14 +1,11 @@
-using System;
-using UnityEngine;
+using UnityEngine.Events;
 
 public class Wallet
 {
     public int Coins { get; private set; }
-
-    public event Action OnValueChanged;
+    public event UnityAction OnValueChanged;
 
     private static Wallet instance;
-
     public static Wallet Instance
     {
         get

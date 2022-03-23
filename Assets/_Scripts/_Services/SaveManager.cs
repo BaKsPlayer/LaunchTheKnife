@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SaveManager
 {
-
-    public event Action OnSaveData;
+    public event UnityAction OnSaveData;
 
     private static SaveManager instance;
     public static SaveManager Instance

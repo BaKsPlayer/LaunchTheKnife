@@ -6,7 +6,10 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private KnifeShop knifeShop;
     [SerializeField] private GameObject startScreen;
 
-    public GameManager gameManager;
+    private void Awake()
+    {
+        SaveManager.Instance.LoadData();
+    }
 
     private void Start()
     {
@@ -17,10 +20,6 @@ public class GameInitializer : MonoBehaviour
 
         settings.Initialize();
         knifeShop.Initialize();
-
-        SaveManager.Instance.LoadData();
-
-        gameManager.coinsText.text = Wallet.Instance.Coins.ToString();
 
         Application.targetFrameRate = 60;
 

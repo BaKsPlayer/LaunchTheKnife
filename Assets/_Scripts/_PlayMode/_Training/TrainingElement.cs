@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class TrainingElement : MonoBehaviour
 {
@@ -18,14 +17,22 @@ public abstract class TrainingElement : MonoBehaviour
             return;
         }
 
-        gameObject.SetActive(false);
+        Deactivate();
 
         tapHandler.OnClick += Deactivate;
+        gameKnife.OnKnivesCountChanged += Deactivate;
 
         gameKnife.OnKnifeReachedCenter += Activate;
 
         gameController.OnTrainingCompleted += TrainingCompleted;
     }
+
+    private void TrainingCompleted() => Destroy(gameObject);
+
+    private void Activate() => gameObject.SetActive(true);
+    private void Deactivate() => gameObject.SetActive(false);
+    
+    protected abstract void Update();
 
     private void OnDestroy()
     {
@@ -34,24 +41,8 @@ public abstract class TrainingElement : MonoBehaviour
         gameKnife.OnKnifeReachedCenter -= Activate;
 
         tapHandler.OnClick -= Deactivate;
+        gameKnife.OnKnivesCountChanged -= Deactivate;
     }
-
-    private void TrainingCompleted()
-    {
-        Destroy(gameObject);
-    }
-
-    private void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    private void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
-
-    protected abstract void Update();
 
     private void Reset()
     {

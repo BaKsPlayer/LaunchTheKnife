@@ -15,7 +15,7 @@ public class SettingsManager : MonoBehaviour
 
     [SerializeField] private GameObject scorePanel;
 
-    Animator _animator;
+    private Animator _animator;
 
     private void Awake()
     {
@@ -31,7 +31,6 @@ public class SettingsManager : MonoBehaviour
     public void CloseSettings()
     {
         _animator.SetTrigger("Close");
-
         StartCoroutine(DeactivateSettings(0.5f));
     }
 
@@ -62,13 +61,11 @@ public class SettingsManager : MonoBehaviour
         if (PlayerPrefsSafe.GetInt("LeftHand") == 0)
         {
             leftHandToggle.sprite = toggleOff;
-
             scorePanel.GetComponent<RectTransform>().localPosition = new Vector2(-324, scorePanel.GetComponent<RectTransform>().localPosition.y);
         }
         else
         {
             leftHandToggle.sprite = toggleOn;
-
             scorePanel.GetComponent<RectTransform>().localPosition = new Vector2(324, scorePanel.GetComponent<RectTransform>().localPosition.y);
         }
     }

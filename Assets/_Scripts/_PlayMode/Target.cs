@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Target : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class Target : MonoBehaviour
     [SerializeField] private float scaleOffset;
 
     public Transform parentTransform { get; private set; }
-    public event Action OnHit;
+    public event UnityAction OnHit;
 
     private Vector2 originalScale;
 

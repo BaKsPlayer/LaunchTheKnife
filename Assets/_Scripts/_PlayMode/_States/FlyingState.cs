@@ -14,7 +14,6 @@ public class FlyingState : State
         base.Init();
 
         _gameKnife.GetComponent<SpriteRenderer>().sortingOrder = 2;
-
         hit = _gameKnife.Hit;
 
         if (hit)

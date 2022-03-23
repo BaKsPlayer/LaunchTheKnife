@@ -1,5 +1,4 @@
-using UnityEngine;
-using System;
+using UnityEngine.Events;
 
 public class GameStats
 {
@@ -8,9 +7,9 @@ public class GameStats
     public SafeInt Score { get; private set; }
     public SafeInt BestScore { get; private set; }
 
-    public Action OnCoinsChanged;
-    public Action OnScoreChanged;
-    public Action OnBestScoreChanged;
+    public UnityAction OnCoinsChanged;
+    public UnityAction OnScoreChanged;
+    public UnityAction OnBestScoreChanged;
 
     private static GameStats instance;
     public static GameStats Instance

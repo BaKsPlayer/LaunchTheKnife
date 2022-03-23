@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class TrainingTimeController : TrainingElement
@@ -8,8 +7,5 @@ public class TrainingTimeController : TrainingElement
         Time.timeScale = gameController.CurrentTimeScale * Mathf.Lerp(1f, 0.1f, knifeToTargetAngleRatio);
     }
 
-    private void OnDisable()
-    {
-        Time.timeScale = gameController.CurrentTimeScale;
-    }
+    private void OnDisable() => Time.timeScale = gameController.CurrentTimeScale;
 }

@@ -3,8 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StandingState", menuName = "GameKnifeStates/StandingState", order = 1)]
 public class StandingState : State
 {
-    float leftDegreesToChangeState;
-
+    private float leftDegreesToChangeState;
     [SerializeField] private State movingState;
 
     public override void Init()

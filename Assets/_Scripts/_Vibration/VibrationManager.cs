@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum VibrationType { Error, Success, Light, Medium, Heavy, Soft }
@@ -9,7 +7,7 @@ public class VibrationManager : MonoBehaviour
 
     IVibrator _vibrator;
 
-    public static VibrationManager instance;
+    public static VibrationManager Instance;
 
     private void Awake()
     {
@@ -19,12 +17,16 @@ public class VibrationManager : MonoBehaviour
         _vibrator = gameObject.AddComponent<AndroidVibrator>();
 #endif
 
-        if (instance != null)
-            if (instance != this)
-                Destroy(this);
-
-        DontDestroyOnLoad(this);
-        instance = this;
+        if (Instance != null)
+        {
+            if (Instance != this)
+                Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     public void Vibrate(VibrationType type)

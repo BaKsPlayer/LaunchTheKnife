@@ -69,6 +69,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -484,6 +485,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      KnifeShop_0: -454658486137018257
+      Frame 5_8: 4262981936079040783
+      Frame 5_5: 204278508156418029
+      KnifeShop_1: -9027551288743305470
+      Frame 5_4: -2398381544524043197
+      Frame 5_2: -7709759354215043124
+      Frame 5_6: -4295426344354661223
+      Frame 5_3: 6594788466171415369
+      KnifeShop_2: 758313967764362488
+      Frame 5_10: 5306800490597928043
+      Frame 5_7: -217913684695936425
+      Frame 5_0: 2152435787208944178
+      Frame 5_11: 5895030082686667241
+      Frame 5_1: -4921585597979164835
+      Frame 5_9: 2756608618273294778
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

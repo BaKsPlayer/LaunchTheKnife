@@ -1,21 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 public class KnifeRotator : MonoBehaviour
 {
     private int _dir = 0;
-
     private float _rotateSpeed = 250;
-
     private Transform _transform;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _dir = (Random.Range(0, 2) == 0) ? -1 : 1;
-
         _transform = transform;
     }
 
@@ -27,7 +21,6 @@ public class KnifeRotator : MonoBehaviour
     private void OnBecameInvisible()
     {
         gameObject.SetActive(false);
-
         _transform.position = Vector3.zero;
     }
 

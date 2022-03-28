@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class KnifeShop : MonoBehaviour
 {
-    KnifeButton _activeButton;
-    KnifeButton _activeKnife;
+    private KnifeButton _activeButton;
+    private KnifeButton _activeKnife;
     public bool isGetingRandomKnife { get; private set; }
 
     [Header("Buy Random Knife")]
@@ -26,10 +26,13 @@ public class KnifeShop : MonoBehaviour
     [SerializeField] private DemoKnife demoKnife;
     public DemoKnife DemoKnife => demoKnife;
 
+    [SerializeField] private GameKnife gameKnife;
+    public GameKnife GameKnife => gameKnife;
+
     [SerializeField] private Text coinsText;
     public Text CoinsText => coinsText;
 
-    public GameManager gameManager;
+    [SerializeField] private Button advertButton;
 
     [SerializeField] private KnifeButton[] allKnives;
     private List<KnifeButton> nonPurchasedKnives = new List<KnifeButton>();
@@ -82,8 +85,6 @@ public class KnifeShop : MonoBehaviour
 
             if (i == nowKnifeSkinID)
             {
-                allKnives[i].Select();
-
                 _activeButton = allKnives[i];
                 _activeKnife = allKnives[i];
             }
@@ -91,17 +92,22 @@ public class KnifeShop : MonoBehaviour
 
         if (nonPurchasedKnives.ToArray().Length == 0)
             buyRandomKnifeButton.interactable = false;
+
+        advertButton.onClick.AddListener(delegate { AdvertManager.Instance.ShowAd(AdType.KnifeShopReward); });
+
+        ResetKnifeShop();
+        CloseKnifeShop();
     }
 
 
     public void BuyActiveButtonKnife(bool isFree = false)
     {
-        if (_activeButton.Price <= GameManager.coins || isFree)
+        if (_activeButton.Price <= Wallet.Instance.Coins || isFree)
         {
             if (!isFree)
             {
-                GameManager.coins -= _activeButton.Price;
-                CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+                Wallet.Instance.SpendCoins(_activeButton.Price);
+                coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins + _activeButton.Price, Wallet.Instance.Coins);
             }
 
             PlayerPrefsSafe.SetInt("KnifeLvl_" + _activeButton.Id, 1);
@@ -113,17 +119,17 @@ public class KnifeShop : MonoBehaviour
             if (nonPurchasedKnives.ToArray().Length == 0)
                 buyRandomKnifeButton.interactable = false;
 
-            VibrationManager.instance.Vibrate(VibrationType.Success);
+            VibrationManager.Instance.Vibrate(VibrationType.Success);
         }
 
     }
 
     public void BuyRandomKnife()
     {
-        if (GameManager.coins >= _randomKnifePrice)
+        if (Wallet.Instance.Coins >= _randomKnifePrice)
         {
-            GameManager.coins -= _randomKnifePrice;
-            CoinsText.text = gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+            Wallet.Instance.SpendCoins(_randomKnifePrice);
+            coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins + _randomKnifePrice, Wallet.Instance.Coins);
 
             if (nonPurchasedKnives.ToArray().Length >= 2)
                 StartCoroutine(RandomKnife());
@@ -178,21 +184,38 @@ public class KnifeShop : MonoBehaviour
 
     public void ResetKnifeShop()
     {
+        int temp = PlayerPrefsSafe.GetInt("Vibration");
         PlayerPrefsSafe.SetInt("Vibration", 0);
 
         _activeKnife.Select();
-
-        PlayerPrefsSafe.SetInt("Vibration", 1);
+        PlayerPrefsSafe.SetInt("Vibration", temp);
     }
 
     public void Reward50Coins()
     {
-        StartCoroutine(CoinsText.GetComponent<CoinsFiller>().FillCoins(GameManager.coins, GameManager.coins + 50));
-
-        GameManager.coins += 50;
-
-        gameManager.GetComponent<GameManager>().coinsText.text = GameManager.coins.ToString();
+        Wallet.Instance.AddCoins(50);
+        coinsText.GetComponent<CoinsFiller>().Fill(Wallet.Instance.Coins - 50, Wallet.Instance.Coins);
     }
 
+    public void OpenKnifeShop()
+    {
+        ResetKnifeShop();
 
+        gameObject.SetActive(true);
+        GetComponent<Animator>().SetTrigger("Open");
+    }
+
+    public void CloseKnifeShop()
+    {
+        GetComponent<Animator>().SetTrigger("Close");
+
+        StartCoroutine(DeactivateKnifeShop(0.5f));
+     }
+
+    private IEnumerator DeactivateKnifeShop(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        gameObject.SetActive(false);
+    }
 }

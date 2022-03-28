@@ -52,8 +52,6 @@ namespace GaussianBlur_Mobile
         /// </summary>
         private Material mat;
 
-        public GameManager gameManager;
-
         private void Start()
         {
             //set up the blur texture
@@ -73,13 +71,6 @@ namespace GaussianBlur_Mobile
             {
                 mat = new Material(Shader.Find("Hidden/GaussianBlur_Mobile"));
             }
-        }
-
-        private void Update()
-        {
-            //if (gameManager.settings.activeSelf)
-            //    Iterations = 25;
-            //else Iterations = 7;
         }
 
         #region BlurScaleSlider

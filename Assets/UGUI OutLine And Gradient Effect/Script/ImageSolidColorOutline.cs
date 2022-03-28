@@ -58,6 +58,11 @@ namespace AppsTools
             base.graphic.SetVerticesDirty();
         }
 
+        public void Refresh()
+        {
+            _Refresh();
+        }
+
         public override void ModifyMesh(VertexHelper vh)
         {
             vh.GetUIVertexStream(m_VetexList);

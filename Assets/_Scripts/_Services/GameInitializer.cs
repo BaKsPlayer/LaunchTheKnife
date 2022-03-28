@@ -41,11 +41,19 @@ public class GameInitializer : MonoBehaviour
         SaveManager.Instance.SaveData();
     }
 
-#if !UNITY_EDITOR
+#if !UNITY_EDITOR && UNITY_ANDROID
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            SaveManager.Instance.SaveData();
+    }
+#elif !UNITY_EDITOR && UNITY_IOS
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)
             SaveManager.Instance.SaveData();
+
+        //Debug.Log("OnApplicationFocus");
     }
 #endif
 }

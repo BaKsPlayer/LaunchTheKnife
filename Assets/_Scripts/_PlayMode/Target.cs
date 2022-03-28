@@ -95,6 +95,8 @@ public class Target : MonoBehaviour
         m_Animator.SetTrigger("Hit");
         m_Animator.SetTrigger("Change");
 
+        VibrationManager.Instance.Vibrate(VibrationType.Heavy);
+
         OnHit?.Invoke();
     }
 

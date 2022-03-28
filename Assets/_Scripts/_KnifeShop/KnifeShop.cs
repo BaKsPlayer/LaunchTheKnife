@@ -85,8 +85,6 @@ public class KnifeShop : MonoBehaviour
 
             if (i == nowKnifeSkinID)
             {
-                allKnives[i].Select();
-
                 _activeButton = allKnives[i];
                 _activeKnife = allKnives[i];
             }
@@ -97,6 +95,7 @@ public class KnifeShop : MonoBehaviour
 
         advertButton.onClick.AddListener(delegate { AdvertManager.Instance.ShowAd(AdType.KnifeShopReward); });
 
+        ResetKnifeShop();
         CloseKnifeShop();
     }
 
@@ -185,9 +184,11 @@ public class KnifeShop : MonoBehaviour
 
     public void ResetKnifeShop()
     {
+        int temp = PlayerPrefsSafe.GetInt("Vibration");
         PlayerPrefsSafe.SetInt("Vibration", 0);
+
         _activeKnife.Select();
-        PlayerPrefsSafe.SetInt("Vibration", 1);
+        PlayerPrefsSafe.SetInt("Vibration", temp);
     }
 
     public void Reward50Coins()

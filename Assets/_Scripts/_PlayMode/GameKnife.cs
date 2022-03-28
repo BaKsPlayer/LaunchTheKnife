@@ -97,6 +97,8 @@ public class GameKnife : MonoBehaviour
 
     public void Launch()
     {
+        VibrationManager.Instance.Vibrate(VibrationType.Light);
+
         target.Stop();
         Hit = Physics2D.Raycast(m_Transform.position, FlightDirection, 100, toHit);
         SetState(flyingState);
@@ -128,8 +130,6 @@ public class GameKnife : MonoBehaviour
 
     public void HitTarget()
     {
-        VibrationManager.Instance.Vibrate(VibrationType.Heavy);
-
         transform.SetParent(target.transform, true);
         GameStats.Instance.IncreaseScore();
 
